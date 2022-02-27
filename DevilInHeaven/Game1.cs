@@ -1,19 +1,33 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Black_Magic;
+using Penumbra;
 
 namespace DevilInHeaven
 {
     public class Game1 : Game
     {
-        private GraphicsDeviceManager _graphics;
+        public static GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
+        public static PenumbraComponent penumbra;
+
+        public const bool isEditing = false;
 
         public Game1()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+            graphics.IsFullScreen = true;
+            IsFixedTimeStep = false;
+            graphics.PreferredBackBufferWidth = 1920;
+            graphics.PreferredBackBufferHeight = 1080;
+            graphics.ApplyChanges();
             IsMouseVisible = true;
+
+            //Add penumbra (lighting) component
+            penumbra = new PenumbraComponent(this);
+            Components.Add(penumbra);
         }
 
         protected override void Initialize()
@@ -21,6 +35,9 @@ namespace DevilInHeaven
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            if (!isEditing) MasterHandler.Init();
+            //else Editor.Init();
         }
 
         protected override void LoadContent()
@@ -28,6 +45,7 @@ namespace DevilInHeaven
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            MasterHandler.LoadContent(Content);
         }
 
         protected override void Update(GameTime gameTime)
@@ -35,16 +53,18 @@ namespace DevilInHeaven
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
 
-            // TODO: Add your update logic here
+            if (!isEditing) MasterHandler.Update(gameTime);
+            //else if (IsActive) Editor.Update(gameTime);
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            Game1.penumbra.BeginDraw();
 
-            // TODO: Add your drawing code here
+            if (!isEditing) MasterHandler.Draw(_spriteBatch, GraphicsDevice);
+            //else Editor.Draw(_spriteBatch, GraphicsDevice);
 
             base.Draw(gameTime);
         }
