@@ -31,11 +31,11 @@ namespace Black_Magic
             ClickHandler.Update();
 
             //Buffer Time
-            if (gameTime.TotalGameTime.TotalSeconds > 2)
-            {
+            //if (gameTime.TotalGameTime.TotalSeconds > 2)
+            //{
                 EntityHandler.Update(gameTime);
-            }
-
+            //}
+        
             Camera.Update(gameTime);
         }
 

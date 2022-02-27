@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using DevilInHeaven.Entities;
 
 namespace Black_Magic
 {
@@ -16,6 +17,9 @@ namespace Black_Magic
         public static void Init()
         {
             entities = new List<Entity>();
+
+            Player player = new Player(300, 100);
+            entities.Add(player);
 
             //byte[] map = Spooky_Stealth.Properties.Resources.TestMap;
             //MapLoader.Import(map);            
@@ -84,6 +88,14 @@ namespace Black_Magic
         {
             traits = new List<Trait>();
             this.classId = classId;
+            this.x = x;
+            this.y = y;
+        }
+
+        public Entity(float x, float y)
+        {
+            traits = new List<Trait>();
+            this.classId = "Entity";
             this.x = x;
             this.y = y;
         }

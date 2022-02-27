@@ -17,13 +17,7 @@ namespace Black_Magic
         //Friction force, air friction and whatnot need to be treated differently if game is top-down!
 
         private const String traitName = "friction";
-        public Friction(Entity parent, float coefficient) : base(traitName, parent)
-        {
-            this.coefficient = coefficient;
-            airCoefficient = 0;
-        }
-
-        public Friction(Entity parent, float coefficient, float airCoefficient) : base(traitName, parent)
+        public Friction(Entity parent, float coefficient, float airCoefficient = 0) : base(traitName, parent)
         {
             this.coefficient = coefficient;
             this.airCoefficient = airCoefficient;
