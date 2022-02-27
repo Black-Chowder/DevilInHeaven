@@ -21,6 +21,9 @@ namespace Black_Magic
             Player player = new Player(300, 100);
             entities.Add(player);
 
+            Platform platform = new Platform(100, 500, 500, 200);
+            entities.Add(platform);
+
             //byte[] map = Spooky_Stealth.Properties.Resources.TestMap;
             //MapLoader.Import(map);            
         }

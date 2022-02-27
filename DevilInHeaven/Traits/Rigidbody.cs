@@ -40,6 +40,7 @@ namespace Black_Magic
     {
         private Rectangle hitbox;
         //Getters and setters:
+        //TODO: Fix setters
         public int x
         {
             get => hitbox.X;
@@ -69,6 +70,7 @@ namespace Black_Magic
         {
             this.hitbox = hitbox;
         }
+        //NOTE: This constructor doesn't work yet!!!
         public HitRect(Entity parent, int x, int y, int width, int height) : base(parent)
         {
             this.x = x;

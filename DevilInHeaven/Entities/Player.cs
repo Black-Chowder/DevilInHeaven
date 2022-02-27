@@ -30,7 +30,7 @@ namespace DevilInHeaven.Entities
             rigidbody = new Rigidbody(this, hitbox);
             addTrait(rigidbody);
 
-            gravity = new Gravity(this, 0);
+            gravity = new Gravity(this, 1f);
             addTrait(gravity);
 
             movement = new PMovement(this, gravity);
