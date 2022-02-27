@@ -15,6 +15,7 @@ namespace DevilInHeaven.Entities
         public HitRect hitbox { get; private set; }
         public Gravity gravity { get; private set; }
         public PMovement movement { get; private set; }
+        public PFriction friction { get; private set; }
 
         //Testing Variables
         private const bool drawHitbox = true;
@@ -35,6 +36,9 @@ namespace DevilInHeaven.Entities
             movement = new PMovement(this, gravity);
             movement.directControl = true;
             addTrait(movement);
+
+            friction = new PFriction(this, 1.5f);
+            addTrait(friction);
         }
 
         public override void Update(GameTime gameTime)

@@ -7,17 +7,19 @@ using Microsoft.Xna.Framework;
 
 namespace Black_Magic
 {
-    public class Friction : Trait
+    public class PFriction : Trait
     {
         public float coefficient;
         public float airCoefficient;
         public float frictionForce = 0;
 
-        //REMINDER TO PROGRAM LATER: 
-        //Friction force, air friction and whatnot need to be treated differently if game is top-down!
-
         private const String traitName = "friction";
-        public Friction(Entity parent, float coefficient, float airCoefficient = 0) : base(traitName, parent)
+        public PFriction(Entity parent, float coefficient) : base(traitName, parent)
+        {
+            this.coefficient = coefficient;
+            this.airCoefficient = coefficient;
+        }
+        public PFriction(Entity parent, float coefficient, float airCoefficient) : base(traitName, parent)
         {
             this.coefficient = coefficient;
             this.airCoefficient = airCoefficient;
