@@ -41,16 +41,21 @@ namespace DevilInHeaven.Traits
         {
             KeyboardState keys = Keyboard.GetState();
 
-            float target = 0;
+            Vector2 target = Vector2.Zero;
             if (keys.IsKeyDown(right))
-            {
-                target += 1;
-            }
+                target = new Vector2(1, target.Y);
+
             if (keys.IsKeyDown(left))
-            {
-                target -= 1;
-            }
+                target = new Vector2(-1, target.Y);
+
+            if (keys.IsKeyDown(up))
+                target = new Vector2(target.X, -1);
+
+            if (keys.IsKeyDown(down))
+                target = new Vector2(target.X, 1);
+
             parent.movement.Move(gameTime, target);
+
 
             if (keys.IsKeyDown(jump))
             {

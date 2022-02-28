@@ -40,6 +40,8 @@ namespace DevilInHeaven.Entities
             addTrait(gravity);
 
             movement = new PMovement(this, gravity);
+            movement.upSpeed = .5f;
+            movement.downSpeed = 2f;
             addTrait(movement);
 
             friction = new PFriction(this, 1.5f);

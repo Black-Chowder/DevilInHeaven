@@ -11,34 +11,37 @@ namespace Black_Magic
         public float speed { get; set; }
         private const float defaultSpeed = 5f;
 
-        public float verticalSpeed { get; set; }
-        private const float verticalSpeedDefault = 1f;
+        public float verticalSpeed 
+        { 
+            get => MathF.Sqrt(upSpeed * upSpeed + downSpeed * downSpeed); 
+            set { upSpeed = value; downSpeed = value; } 
+        }
+        private const float defaultVerticalSpeed = 0f;
+        public float upSpeed { get; set; }
+        public float downSpeed { get; set; }
 
         public float jumpHeight { get; set; }
         private const float defaultJumpHeight = 35f;
 
         private Gravity gravity;
 
-        public PMovement(Entity parent, Gravity gravity, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight) : base(parent)
+        public PMovement(Entity parent, Gravity gravity, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight, float verticalSpeed = defaultVerticalSpeed) : base(parent)
         {
             this.gravity = gravity;
             this.speed = speed;
             this.jumpHeight = jumpHeight;
+            this.verticalSpeed = verticalSpeed;
         }
 
-        //direction 1 = right, -1 = left
-        public void Move(GameTime gameTime, float direction)
+        public void Move(GameTime gameTime, Vector2 target, float determination = float.NaN)
         {
-            if (direction > 1) direction = 1f;
-            else if (direction < -1) direction = -1;
-
-            parent.dx += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
+            Move(gameTime, MathF.Atan2(target.Y, target.X), float.IsNaN(determination) ? target.Length() : determination);
         }
 
-        //Movement with vertical suggestion
-        public void Move(GameTime gameTime, Vector2 direction)
+        public void Move(GameTime gameTime, float angle, float determination = 1)
         {
-            //TODO
+            parent.dx += MathF.Cos(angle) * determination * speed * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
+            parent.dy += MathF.Sin(angle) * determination * (angle < 0 ? upSpeed : downSpeed) * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
         }
 
         public void Jump(GameTime gameTime, float determination = 1f)
