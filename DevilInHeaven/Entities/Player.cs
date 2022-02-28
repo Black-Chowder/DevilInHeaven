@@ -18,6 +18,7 @@ namespace DevilInHeaven.Entities
         public PMovement movement { get; private set; }
         public PFriction friction { get; private set; }
         public WallSlider wallSlider { get; private set; }
+        public WallJumper wallJumper { get; private set; }
 
         //Testing Variables
         private const bool drawHitbox = true;
@@ -32,18 +33,21 @@ namespace DevilInHeaven.Entities
             rigidbody = new Rigidbody(this, hitbox);
             addTrait(rigidbody);
 
-            gravity = new Gravity(this, 1f);
+            gravity = new Gravity(this, 1.5f);
             addTrait(gravity);
 
-            movement = new PMovement(this, gravity);
+            movement = new PMovement(this);
             movement.directControl = true;
             addTrait(movement);
 
             friction = new PFriction(this, 1.5f);
             addTrait(friction);
 
-            wallSlider = new WallSlider(this);
+            wallSlider = new WallSlider(this, 1.15f);
             addTrait(wallSlider);
+
+            wallJumper = new WallJumper(this);
+            addTrait(wallJumper);
         }
 
         public override void Update(GameTime gameTime)

@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using DevilInHeaven.Entities;
+using Black_Magic;
 
-namespace Black_Magic
+namespace DevilInHeaven.Traits
 {
-    public class PMovement : Trait
+    public class PMovement : Trait<Player>
     {
         public float speed { get; set; }
         public const float defaultSpeed = 5f;
 
         public float jumpHeight { get; set; }
-        public const float defaultJumpHeight = 30f;
+        public const float defaultJumpHeight = 35f;
 
         public bool directControl { private get; set; }
 
@@ -23,9 +25,9 @@ namespace Black_Magic
         public Keys leftKey { get; set; } = Keys.A;
         public Keys jumpKey { get; set; } = Keys.Space;
 
-        public PMovement(Entity parent, Gravity gravity, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight, bool directControl = false) : base(parent)
+        public PMovement(Player parent, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight, bool directControl = false) : base(parent)
         {
-            this.gravity = gravity;
+            this.gravity = parent.gravity;
             this.speed = speed;
             this.jumpHeight = jumpHeight;
             this.directControl = directControl;
@@ -43,6 +45,13 @@ namespace Black_Magic
         public void Jump(GameTime gameTime, float determination = 1f)
         {
             //TODO: Add comfort timers so that rules around when can jump aren't so strict
+
+            if (parent.wallSlider.isSliding)
+            {
+                parent.wallJumper.Jump();
+                return;
+            }
+
             if (!gravity.grounded) return;
 
             parent.dy -= determination * jumpHeight;
