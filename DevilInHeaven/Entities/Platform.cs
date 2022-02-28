@@ -31,10 +31,23 @@ namespace DevilInHeaven.Entities
             if (drawHitbox)
             {
                 hitboxTexture ??= General.createTexture(graphicsDevice);
-                for (int i = 0; i < MathF.Floor(width / height); i++)
+                if (width > height)
                 {
+                    for (int i = 0; i < MathF.Floor(width / height); i++)
+                    {
+                        spriteBatch.Draw(hitboxTexture,
+                            new Vector2((x + hitbox.height * i - Camera.x) * Camera.gameScale, (y - Camera.y) * Camera.gameScale),
+                            new Rectangle(0, 0, 1, 1),
+                            Color.Black,
+                            0,
+                            new Vector2(0, 0),
+                            hitbox.height * Camera.gameScale,
+                            SpriteEffects.None,
+                            0f);
+                    }
+
                     spriteBatch.Draw(hitboxTexture,
-                        new Vector2((x + hitbox.height * i - Camera.x) * Camera.gameScale, (y - Camera.y) * Camera.gameScale),
+                        new Vector2((x + hitbox.width - hitbox.height - Camera.x) * Camera.gameScale, (y - Camera.y) * Camera.gameScale),
                         new Rectangle(0, 0, 1, 1),
                         Color.Black,
                         0,
@@ -43,16 +56,31 @@ namespace DevilInHeaven.Entities
                         SpriteEffects.None,
                         0f);
                 }
-
-                spriteBatch.Draw(hitboxTexture,
-                    new Vector2((x + hitbox.width - hitbox.height - Camera.x) * Camera.gameScale, (y - Camera.y) * Camera.gameScale),
-                    new Rectangle(0, 0, 1, 1),
-                    Color.Black,
-                    0,
-                    new Vector2(0, 0),
-                    hitbox.height * Camera.gameScale,
-                    SpriteEffects.None,
-                    0f);
+                else
+                {
+                    for (int i = 0; i < MathF.Floor(height / width); i++)
+                    {
+                        spriteBatch.Draw(hitboxTexture,
+                            new Vector2((x - Camera.x) * Camera.gameScale, (y + hitbox.width * i - Camera.y) * Camera.gameScale),
+                            new Rectangle(0, 0, 1, 1),
+                            Color.Black,
+                            0,
+                            new Vector2(0, 0),
+                            hitbox.width * Camera.gameScale,
+                            SpriteEffects.None,
+                            0f);
+                    }
+                    
+                    spriteBatch.Draw(hitboxTexture,
+                        new Vector2((x - Camera.x) * Camera.gameScale, (y + hitbox.height - hitbox.width - Camera.y) * Camera.gameScale),
+                        new Rectangle(0, 0, 1, 1),
+                        Color.Black,
+                        0,
+                        new Vector2(0, 0),
+                        hitbox.width * Camera.gameScale,
+                        SpriteEffects.None,
+                        0f);
+                }
             }
         }
     }

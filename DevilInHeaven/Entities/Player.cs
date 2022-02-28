@@ -5,6 +5,7 @@ using System.Text;
 using Black_Magic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using DevilInHeaven.Traits;
 
 namespace DevilInHeaven.Entities
 {
@@ -16,6 +17,7 @@ namespace DevilInHeaven.Entities
         public Gravity gravity { get; private set; }
         public PMovement movement { get; private set; }
         public PFriction friction { get; private set; }
+        public WallSlider wallSlider { get; private set; }
 
         //Testing Variables
         private const bool drawHitbox = true;
@@ -39,6 +41,9 @@ namespace DevilInHeaven.Entities
 
             friction = new PFriction(this, 1.5f);
             addTrait(friction);
+
+            wallSlider = new WallSlider(this);
+            addTrait(wallSlider);
         }
 
         public override void Update(GameTime gameTime)

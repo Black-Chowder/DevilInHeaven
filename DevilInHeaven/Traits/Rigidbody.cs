@@ -368,7 +368,7 @@ namespace Black_Magic
                         entityRigidbody = (Rigidbody)entity.getTrait(traitName);
                         if (!entityRigidbody.isOverride) entity.dx = parent.dx;
 
-                        hitbox.left = entity;
+                        hitbox.right = entity;
 
                         parent.dx = 0;
                         parent.x = rayData.Value.X - hitbox.width - hitbox.x;
@@ -383,7 +383,7 @@ namespace Black_Magic
                         entityRigidbody = (Rigidbody)entity.getTrait(traitName);
                         if (!entityRigidbody.isOverride) entity.dx = parent.dx;
 
-                        hitbox.right = entity;
+                        hitbox.left = entity;
 
                         parent.dx = 0;
                         parent.x = rayData.Value.X - hitbox.x;
