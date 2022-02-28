@@ -15,15 +15,19 @@ namespace Black_Magic
         {
             Animator parent;
 
+            public readonly string name;
+
             public bool looping = false;
 
             List<Rectangle> animationRects;
 
             //Constructor
             //NOTE: Just realized inReverse is never actually implemented
-            public Animation(Animator parent, int startSprite, int endSprite, bool inReverse = false, bool looping = false)
+            public Animation(Animator parent, string name, int startSprite, int endSprite, bool inReverse = false, bool looping = false)
             {
                 this.parent = parent;
+
+                this.name = name;
 
                 this.looping = looping;
 
@@ -162,7 +166,7 @@ namespace Black_Magic
 
         public void AddAnimation(string name, int startSprite, int endSprite, bool inReverse = false, bool looping = false)
         {
-            animations.Add(name, new Animation(this, startSprite, endSprite, inReverse, looping));
+            animations.Add(name, new Animation(this, name, startSprite, endSprite, inReverse, looping));
         }
 
 
@@ -221,6 +225,9 @@ namespace Black_Magic
         public void Draw(SpriteBatch spriteBatch, float x, float y)
         {
             animation ??= animations.FirstOrDefault().Value;
+
+            float value = animator / aniMod;
+            Rectangle value2 = animation.get((int)(animator / aniMod));
 
             spriteBatch.Draw(spriteSheet, //Texture
                 new Vector2(x * gameScale, y * gameScale), //Position

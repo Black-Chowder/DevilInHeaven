@@ -41,8 +41,8 @@ namespace DevilInHeaven.Entities
 
             animator = new Animator(spriteSheet, new Rectangle(32, 32, 2, 1));
             animator.AddAnimation("devil", 0, 0);
-            animator.AddAnimation("angel", 1, 1);
-            animator.SetAnimation("devil");
+            animator.AddAnimation("angel", 3, 2);
+            animator.SetAnimation(isAngel ? "angel" : "devil");
             animator.isFacingRight = true;
             animator.scale = 6;
 
@@ -88,6 +88,9 @@ namespace DevilInHeaven.Entities
                 dasher.Dash(keys.IsKeyDown(Keys.D) ? 0 : MathF.PI);
 
             base.Update(gameTime);
+
+            animator.gameScale = Camera.gameScale;
+            animator.Update(gameTime);
         }
 
         public override void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
