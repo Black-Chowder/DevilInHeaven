@@ -130,37 +130,12 @@ namespace Black_Magic
 
         public float layer { get; set; } = 0;
 
-        public static class layers
-        {
-            public const float background = .1f;
-            public const float walls = .2f;
-            public const float objects = .3f;
-            public const float effects = .4f;
-            public const float objects2 = .5f;
-            public const float people = .6f;
-            public const float effects2 = .7f;
-            public const float nextFloorBackground = .8f;
-            public const float nextFloorWalls = .9f;
-            public const float newxtFloorObjects = .99f;
-        }
-        /* Layer Designations
-         * background => .1
-         * walls => .2
-         * objects => .3
-         * effects => .4
-         * objects 2 => .5
-         * people => .6
-         * effects 2 => .7
-         * next floor background (faded) => .8
-         * next floor walls (faded) => .9
-         * next floor objects (faded) => .99
-         */
-
         //TODO: Allow for storage of multiple sprite sheets
         public Texture2D spriteSheet { get; private set; }
 
         //Constructor(s)
         //TODO: Add constructor to read info / data from json file
+        //TODO: Make Texture2D be put in as a reference so that it can be set after initialization
         public Animator(Texture2D spriteSheet, int width, int height, int columns, int rows)
         {
             this.spriteSheet = spriteSheet;

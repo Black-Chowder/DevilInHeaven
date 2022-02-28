@@ -5,6 +5,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
 using DevilInHeaven;
+using DevilInHeaven.Entities;
 
 namespace Black_Magic
 {
@@ -45,6 +46,7 @@ namespace Black_Magic
 
             //Load Font
             //font = Content.Load<SpriteFont>("DefaultFont");
+            Player.LoadContent(Content);
 
             //GhostPlayer.LoadContent(Content);
             //Wall.LoadContent(Content);

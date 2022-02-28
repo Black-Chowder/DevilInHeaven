@@ -6,6 +6,7 @@ using Black_Magic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using DevilInHeaven.Traits;
 
 namespace DevilInHeaven.Entities
@@ -23,16 +24,30 @@ namespace DevilInHeaven.Entities
         public Dasher dasher { get; private set; }
         public PlayerControler controler { get; private set; }
 
+        public static Texture2D spriteSheet { get; private set; }
+        protected Animator animator;
+
+        public bool isAngel;
+
         //Testing Variables
         private const bool drawHitbox = true;
         private Texture2D hitboxTexture = null;
 
-        public Player(float x, float y) : base(x, y)
+        public Player(float x, float y, bool isAngel = true) : base(x, y)
         {
-            width = 16;
+            width = 32;
             height = width;
+            this.isAngel = isAngel;
 
-            hitbox = new HitRect(this, new Rectangle((int)-width / 2, (int)0, (int)width, (int)height));
+            animator = new Animator(spriteSheet, new Rectangle(32, 32, 2, 1));
+            animator.AddAnimation("devil", 0, 0);
+            animator.AddAnimation("angel", 1, 1);
+            animator.SetAnimation("devil");
+            animator.isFacingRight = true;
+            animator.scale = 6;
+
+
+            hitbox = new HitRect(this, new Rectangle((int)(-width / 2f), (int)height, (int)width, (int)height));
             rigidbody = new Rigidbody(this, hitbox);
             addTrait(rigidbody);
 
@@ -60,6 +75,11 @@ namespace DevilInHeaven.Entities
             addTrait(controler);
         }
 
+        public static void LoadContent(ContentManager Content)
+        {
+            spriteSheet = Content.Load<Texture2D>(@"Player");
+        }
+
         public override void Update(GameTime gameTime)
         {
             KeyboardState keys = Keyboard.GetState();
@@ -85,6 +105,8 @@ namespace DevilInHeaven.Entities
                     SpriteEffects.None,
                     0f);
             }
+
+            animator.Draw(spriteBatch, x, y);
         }
     }
 }

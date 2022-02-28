@@ -69,6 +69,11 @@ namespace Black_Magic
         {
             this.hitbox = hitbox;
         }
+        public HitRect(Entity parent, int width, int height) : base(parent)
+        {
+            //TODO
+            throw new NotImplementedException();
+        }
         //NOTE: This constructor doesn't work yet!!!
         public HitRect(Entity parent, int x, int y, int width, int height) : base(parent)
         {
