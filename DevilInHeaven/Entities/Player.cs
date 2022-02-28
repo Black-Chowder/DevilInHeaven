@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using Black_Magic;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using DevilInHeaven.Traits;
 
@@ -19,6 +20,7 @@ namespace DevilInHeaven.Entities
         public PFriction friction { get; private set; }
         public WallSlider wallSlider { get; private set; }
         public WallJumper wallJumper { get; private set; }
+        public Dasher dasher { get; private set; }
 
         //Testing Variables
         private const bool drawHitbox = true;
@@ -48,10 +50,18 @@ namespace DevilInHeaven.Entities
 
             wallJumper = new WallJumper(this);
             addTrait(wallJumper);
+
+            dasher = new Dasher(this);
+            addTrait(dasher);
         }
 
         public override void Update(GameTime gameTime)
         {
+            KeyboardState keys = Keyboard.GetState();
+
+            if (keys.IsKeyDown(Keys.OemPeriod))
+                dasher.Dash(keys.IsKeyDown(Keys.D) ? 0 : MathF.PI);
+
             base.Update(gameTime);
         }
 
