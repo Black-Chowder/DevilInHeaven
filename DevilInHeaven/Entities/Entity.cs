@@ -83,6 +83,8 @@ namespace Black_Magic
         public float dx = 0;
         public float dy = 0;
 
+        public float angle = 0f;
+
         public float width;
         public float height;
 

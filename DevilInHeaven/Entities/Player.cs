@@ -29,6 +29,8 @@ namespace DevilInHeaven.Entities
 
         public bool isAngel;
 
+        public bool isFacingRight = true;
+
         //Testing Variables
         private const bool drawHitbox = true;
         private Texture2D hitboxTexture = null;
@@ -82,13 +84,9 @@ namespace DevilInHeaven.Entities
 
         public override void Update(GameTime gameTime)
         {
-            KeyboardState keys = Keyboard.GetState();
-
-            if (keys.IsKeyDown(Keys.OemPeriod))
-                dasher.Dash(keys.IsKeyDown(Keys.D) ? 0 : MathF.PI);
-
             base.Update(gameTime);
 
+            animator.isFacingRight = isFacingRight;
             animator.gameScale = Camera.gameScale;
             animator.Update(gameTime);
         }

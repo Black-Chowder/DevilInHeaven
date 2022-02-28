@@ -20,6 +20,7 @@ namespace DevilInHeaven.Traits
 
         public bool isKeyboardControled { get; set; } = true;
         public int controlerNumber { get; set; } = 0;
+        private const float deadZone = 0f;
 
         public PlayerControler(Player parent) : base(parent)
         {
@@ -54,6 +55,11 @@ namespace DevilInHeaven.Traits
             if (keys.IsKeyDown(down))
                 target = new Vector2(target.X, 1);
 
+            //Set isFacingRight
+            if (target.X != 0)
+                parent.isFacingRight = target.X > 0;
+
+
             parent.movement.Move(gameTime, target);
 
 
@@ -64,6 +70,9 @@ namespace DevilInHeaven.Traits
                 else
                     parent.movement.Jump(gameTime);
             }
+
+            if (keys.IsKeyDown(dash))
+                parent.dasher.Dash(parent.isFacingRight ? 0 : MathF.PI);
         }
     }
 }
