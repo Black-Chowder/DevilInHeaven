@@ -3,34 +3,27 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
-using DevilInHeaven.Entities;
-using Black_Magic;
 
-namespace DevilInHeaven.Traits
+namespace Black_Magic
 {
-    public class PMovement : Trait<Player>
+    public class PMovement : Trait
     {
         public float speed { get; set; }
-        public const float defaultSpeed = 5f;
+        private const float defaultSpeed = 5f;
+
+        public float verticalSpeed { get; set; }
+        private const float verticalSpeedDefault = 1f;
 
         public float jumpHeight { get; set; }
-        public const float defaultJumpHeight = 35f;
-
-        public bool directControl { private get; set; }
+        private const float defaultJumpHeight = 35f;
 
         private Gravity gravity;
 
-        public Keys rightKey { get; set; } = Keys.D;
-        public Keys leftKey { get; set; } = Keys.A;
-        public Keys jumpKey { get; set; } = Keys.Space;
-
-        public PMovement(Player parent, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight, bool directControl = false) : base(parent)
+        public PMovement(Entity parent, Gravity gravity, float speed = defaultSpeed, float jumpHeight = defaultJumpHeight) : base(parent)
         {
-            this.gravity = parent.gravity;
+            this.gravity = gravity;
             this.speed = speed;
             this.jumpHeight = jumpHeight;
-            this.directControl = directControl;
         }
 
         //direction 1 = right, -1 = left
@@ -42,42 +35,20 @@ namespace DevilInHeaven.Traits
             parent.dx += direction * speed * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
         }
 
+        //Movement with vertical suggestion
+        public void Move(GameTime gameTime, Vector2 direction)
+        {
+            //TODO
+        }
+
         public void Jump(GameTime gameTime, float determination = 1f)
         {
             //TODO: Add comfort timers so that rules around when can jump aren't so strict
-
-            if (parent.wallSlider.isSliding)
-            {
-                parent.wallJumper.Jump();
-                return;
-            }
-
             if (!gravity.grounded) return;
 
             parent.dy -= determination * jumpHeight;
         }
 
-        public override void Update(GameTime gameTime)
-        {
-            if (directControl) directControls(gameTime);
-        }
-
-        private void directControls(GameTime gameTime)
-        {
-            KeyboardState keys = Keyboard.GetState();
-
-            float target = 0;
-            if (keys.IsKeyDown(rightKey))
-            {
-                target += 1;
-            }
-            if (keys.IsKeyDown(leftKey))
-            {
-                target -= 1;
-            }
-            Move(gameTime, target);
-
-            if (keys.IsKeyDown(jumpKey)) Jump(gameTime);
-        }
+        public override void Update(GameTime gameTime) { }
     }
 }
