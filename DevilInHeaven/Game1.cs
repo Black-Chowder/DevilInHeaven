@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Black_Magic;
+using DevilInHeaven.Edit;
 using Penumbra;
 
 namespace DevilInHeaven
@@ -12,7 +13,7 @@ namespace DevilInHeaven
         private SpriteBatch _spriteBatch;
         public static PenumbraComponent penumbra;
 
-        public const bool isEditing = false;
+        public const bool isEditing = true;
 
         public Game1()
         {
@@ -37,7 +38,7 @@ namespace DevilInHeaven
             base.Initialize();
 
             if (!isEditing) MasterHandler.Init();
-            //else Editor.Init();
+            else Editor.Init();
         }
 
         protected override void LoadContent()
@@ -54,7 +55,7 @@ namespace DevilInHeaven
                 Exit();
 
             if (!isEditing) MasterHandler.Update(gameTime);
-            //else if (IsActive) Editor.Update(gameTime);
+            else if (IsActive) Editor.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -64,7 +65,7 @@ namespace DevilInHeaven
             Game1.penumbra.BeginDraw();
 
             if (!isEditing) MasterHandler.Draw(_spriteBatch, GraphicsDevice);
-            //else Editor.Draw(_spriteBatch, GraphicsDevice);
+            else Editor.Draw(_spriteBatch, GraphicsDevice);
 
             base.Draw(gameTime);
         }
