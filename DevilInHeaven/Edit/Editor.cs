@@ -11,9 +11,25 @@ namespace DevilInHeaven.Edit
     public static class Editor
     {
         private static Point gridLoc;
-        public static int tileSize = 32 * 6;
+        public static int scale = 6;
+        public static int tileSize = 32 * scale;
 
         private static int[,] grid;
+        private static List<Player> players;
+
+        private class Player
+        {
+            public int x;
+            public int y;
+            public bool isAngel;
+            public static int size = 16 * scale;
+            public Player(int _x, int _y, bool _isAngel)
+            {
+                x = _x;
+                y = _y;
+                isAngel = _isAngel;
+            }
+        }
 
         public static void Init()
         {
@@ -22,6 +38,7 @@ namespace DevilInHeaven.Edit
             Game1.penumbra.AmbientColor = Color.White;
 
             grid = new int[6, 10];
+            players = new List<Player>();
         }
 
         public static void Update(GameTime gameTime)
@@ -49,17 +66,51 @@ namespace DevilInHeaven.Edit
             //Create angels / devils
             if (keys.IsKeyDown(Keys.A))
             {
-                //TODO
+                bool didCollide = false;
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (General.pointRectCollision(mouse.X, mouse.Y, players[i].x - Player.size / 2, players[i].y - Player.size / 2, Player.size, Player.size))
+                    {
+                        didCollide = true;
+                        break;
+                    }
+                }
+
+                if (!didCollide)
+                {
+                    Player player = new Player(mouse.X, mouse.Y, true);
+                    players.Add(player);
+                }
             }
             if (keys.IsKeyDown(Keys.D))
             {
-                //TODO
+                bool didCollide = false;
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (General.pointRectCollision(mouse.X, mouse.Y, players[i].x - Player.size / 2, players[i].y - Player.size / 2, Player.size, Player.size))
+                    {
+                        didCollide = true;
+                        break;
+                    }
+                }
+                
+                if (!didCollide)
+                {
+                    Player player = new Player(mouse.X, mouse.Y, false);
+                    players.Add(player);
+                }
             }
 
             //Delete player
             if (keys.IsKeyDown(Keys.S))
             {
-                //TODO
+                for (int i = 0; i < players.Count; i++)
+                {
+                    if (General.pointRectCollision(mouse.X, mouse.Y, players[i].x - Player.size / 2, players[i].y - Player.size / 2, Player.size, Player.size))
+                    {
+                        players.Remove(players[i]);
+                    }
+                }
             }
             
             //Export
@@ -107,12 +158,27 @@ namespace DevilInHeaven.Edit
             spriteBatch.Draw(General.createTexture(graphicsDevice),
                 new Vector2(mouseDisplayPos.X * Camera.gameScale, mouseDisplayPos.Y * Camera.gameScale),
                 new Rectangle(0, 0, 1, 1),
-                Color.Black,
+                Color.DarkRed * .1f,
                 0,
                 Vector2.Zero,
                 tileSize * Camera.gameScale,
                 SpriteEffects.None,
                 0f);
+
+
+            //Draw player positions
+            for (int i = 0; i < players.Count; i++)
+            {
+                spriteBatch.Draw(General.createTexture(graphicsDevice),
+                    new Vector2(players[i].x - Player.size / 4, players[i].y - Player.size / 4),
+                    new Rectangle(0, 0, 1, 1),
+                    players[i].isAngel ? Color.Blue : Color.Red,
+                    0,
+                    Vector2.Zero,
+                    Player.size * Camera.gameScale,
+                    SpriteEffects.None,
+                    0f);
+            }
 
             spriteBatch.End();
         }
