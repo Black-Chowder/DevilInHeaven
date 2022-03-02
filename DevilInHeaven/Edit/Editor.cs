@@ -19,6 +19,8 @@ namespace DevilInHeaven.Edit
         public static int tileSize = 32 * scale;
 
         private static int[,] grid;
+        private const int rows = 6;
+        private const int columns = 10;
         private static List<Player> players;
 
         private class Player
@@ -41,7 +43,7 @@ namespace DevilInHeaven.Edit
 
             Game1.penumbra.AmbientColor = Color.White;
 
-            grid = new int[6, 10];
+            grid = new int[rows, columns];
             players = new List<Player>();
         }
 
@@ -58,7 +60,12 @@ namespace DevilInHeaven.Edit
             //Create platforms
             if (mouse.LeftButton == ButtonState.Pressed)
             {
-                grid[gridLoc.Y, gridLoc.X] = 1;
+                if (gridLoc.Y >= rows || gridLoc.X >= columns) 
+                {
+                    Console.WriteLine("Warning: Requested to build tile outside bounds of map [" + gridLoc.Y + ", " + gridLoc.X + "]");
+                }
+                else
+                    grid[gridLoc.Y, gridLoc.X] = 1;
             }
 
             else if (mouse.RightButton == ButtonState.Pressed)
@@ -124,9 +131,9 @@ namespace DevilInHeaven.Edit
             }
 
             //Import
-            if (keys.IsKeyDown(Keys.I))
+            if (ClickHandler.IsClicked(Keys.I))
             {
-                //TODO
+                Import();
             }
         }
 
@@ -227,7 +234,7 @@ namespace DevilInHeaven.Edit
             string serializedMapData;
             serializedMapData = JsonSerializer.Serialize(mapData);
 
-            using (StreamWriter w = File.AppendText("ExportedMap.json"))
+            using (StreamWriter w = File.AppendText(@"ExportedMap.json"))
             {
                 w.WriteLine(serializedMapData);
             }
@@ -236,7 +243,25 @@ namespace DevilInHeaven.Edit
 
         public static void Import()
         {
-            //TODO
+            using (StreamReader r = File.OpenText(@"ExportedMap.json"))
+            {
+                string rawData = r.ReadLine();
+
+                MapData mapData = JsonSerializer.Deserialize<MapData>(rawData);
+
+                grid = new int[rows, columns];
+                players.Clear();
+
+                grid = mapData.tiles.As2DArray();
+
+                for (int i = 0; i < 4; i++)
+                {
+                    PlayerData playerData = mapData.players[i];
+                    players.Add(new Player(playerData.x, playerData.y, playerData.isAngel));
+                }
+
+                Console.WriteLine("-- Map " + mapData.name + " loaded --");
+            }
         }
     }
 }

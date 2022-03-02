@@ -171,5 +171,20 @@ namespace Black_Magic
             }
             return toReturn;
         }
+
+        //Converts a jagged array to a 2D array
+        internal static T[,] As2DArray<T>(this T[][] jArray)
+        {
+            //TODO: Add error handling
+            T[,] toReturn = new T[jArray.Length, jArray[0].Length];
+            for (int r = 0; r < jArray.Length; r++)
+            {
+                for (int c = 0; c < jArray[0].Length; c++)
+                {
+                    toReturn[r, c] = jArray[r][c];
+                }
+            }
+            return toReturn;
+        }
     }
 }
