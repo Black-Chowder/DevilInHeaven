@@ -12,10 +12,23 @@ namespace DevilInHeaven.Entities
         public static int tileScale = 6;
         public static int tileSize = 32;
 
+        private static int[,] grid;
+
         public Map(MapData mapData) : base(0, 0)
         {
             //Create platforms
-            //TODO
+            //TODO: Create matrix, not individual platforms
+            grid = mapData.tiles.As2DArray();
+
+            for (int r = 0; r < grid.GetLength(0); r++)
+            {
+                for (int c = 0; c < grid.GetLength(1); c++)
+                {
+                    if (grid[r, c] <= 0) continue;
+
+                    EntityHandler.entities.Add(new Platform(c * tileSize * tileScale, r * tileSize * tileScale, tileSize * tileScale, tileSize * tileScale));
+                }
+            }
 
             //Create players
             Vector2[] playerPositions = new Vector2[4];

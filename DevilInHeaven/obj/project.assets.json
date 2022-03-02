@@ -264,11 +264,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\iabla\\Documents\\GitHub\\DevilInHeaven\\DevilInHeaven\\DevilInHeaven.csproj",
+      "projectUniqueName": "D:\\Programming\\C#\\DevilInHeaven\\DevilInHeaven\\DevilInHeaven.csproj",
       "projectName": "DevilInHeaven",
-      "projectPath": "C:\\Users\\iabla\\Documents\\GitHub\\DevilInHeaven\\DevilInHeaven\\DevilInHeaven.csproj",
+      "projectPath": "D:\\Programming\\C#\\DevilInHeaven\\DevilInHeaven\\DevilInHeaven.csproj",
       "packagesPath": "C:\\Users\\iabla\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\iabla\\Documents\\GitHub\\DevilInHeaven\\DevilInHeaven\\obj\\",
+      "outputPath": "D:\\Programming\\C#\\DevilInHeaven\\DevilInHeaven\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\iabla\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -325,7 +325,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

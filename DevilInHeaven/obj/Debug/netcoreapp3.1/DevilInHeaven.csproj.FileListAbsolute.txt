@@ -52,3 +52,5 @@ C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp
 D:\Programming\C#\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Player.xnb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.Properties.Resources.resources
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.csproj.GenerateResource.cache
+D:\Programming\C#\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.Properties.Resources.resources
+D:\Programming\C#\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.csproj.GenerateResource.cache

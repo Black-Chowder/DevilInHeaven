@@ -63,6 +63,7 @@ namespace DevilInHeaven.Entities
 
             players[0] = new Player(playerPositions[0].X, playerPositions[0].Y, false);
             EntityHandler.entities.Add(players[0]);
+            players[0].controler.isKeyboardControled = true;
             for (int i = 1; i < playerCount; i++)
             {
                 players[i] = new Player(playerPositions[i].X, playerPositions[i].Y, true);
