@@ -1,10 +1,14 @@
 ﻿using System;
+using System.IO;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json;
 using Black_Magic;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
+using DevilInHeaven.Data;
 
 namespace DevilInHeaven.Edit
 {
@@ -114,9 +118,9 @@ namespace DevilInHeaven.Edit
             }
             
             //Export
-            if (keys.IsKeyDown(Keys.E))
+            if (ClickHandler.IsClicked(Keys.E))
             {
-                //TODO
+                Export();
             }
 
             //Import
@@ -185,7 +189,49 @@ namespace DevilInHeaven.Edit
 
         public static void Export()
         {
-            //TODO
+            MapData mapData = new MapData();
+
+            //Check legidemacy of map:
+            if (players.Count != 4)
+            {
+                Console.WriteLine("Invalid number of players");
+                return;
+            }
+            int angels = 0;
+            for (int i = 0; i < players.Count; i++)
+            {
+                if (players[i].isAngel)
+                    angels++;
+            }
+            if (angels != 3)
+            {
+                Console.WriteLine("Invalid number of angels (" + angels + ")");
+                return;
+            }
+
+            Console.WriteLine("Map Name: ");
+            mapData.name = Console.ReadLine();
+            mapData.tiles = grid.ToJaggedArray();
+
+            mapData.players = new PlayerData[4];
+            for (int i = 0; i < 4; i++)
+            {
+                PlayerData playerData = new PlayerData();
+                playerData.x = players[i].x;
+                playerData.y = players[i].y;
+                playerData.isAngel = players[i].isAngel;
+
+                mapData.players[i] = playerData;
+            }
+
+            string serializedMapData;
+            serializedMapData = JsonSerializer.Serialize(mapData);
+
+            using (StreamWriter w = File.AppendText("ExportedMap.json"))
+            {
+                w.WriteLine(serializedMapData);
+            }
+            Console.WriteLine("-- Export Complete --");
         }
 
         public static void Import()
