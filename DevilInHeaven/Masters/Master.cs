@@ -14,6 +14,8 @@ namespace Black_Magic
 
         public static SpriteFont font;
 
+        public static PlayerMaster playerMaster;
+
         private const bool drawGrid = false;
 
         public static void Init()
@@ -23,13 +25,17 @@ namespace Black_Magic
 
             //Initialize Lighting Settings
             Game1.penumbra.AmbientColor = Color.White; //TODO: Set to black once basic components and lighting is added
-
+            
             EntityHandler.Init();
+
+            playerMaster = new PlayerMaster();
         }
 
         public static void Update(GameTime gameTime)
         {
             ClickHandler.Update();
+
+            playerMaster.Update(gameTime);
 
             //Buffer Time
             //if (gameTime.TotalGameTime.TotalSeconds > 2)

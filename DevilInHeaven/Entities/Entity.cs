@@ -18,9 +18,6 @@ namespace Black_Magic
         {
             entities = new List<Entity>();
 
-            Player player = new Player(300, 100);
-            entities.Add(player);
-
             Platform platform = new Platform(100, 1000, 500, 200);
             entities.Add(platform);
 
@@ -35,6 +32,7 @@ namespace Black_Magic
         {
             for (int i = 0; i < entities.Count; i++)
             {
+                if (entities[i] is null) continue;
                 entities[i].Update(gameTime);
             }
         }
@@ -43,6 +41,7 @@ namespace Black_Magic
         {
             for (int i = 0; i < entities.Count; i++)
             {
+                if (entities[i] is null) continue;
                 entities[i].Draw(spriteBatch, graphicsDevice);
             }
         }

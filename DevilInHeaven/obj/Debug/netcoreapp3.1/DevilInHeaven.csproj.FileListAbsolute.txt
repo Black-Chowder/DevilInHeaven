@@ -49,3 +49,4 @@ C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.pdb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.genruntimeconfig.cache
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Player.xnb
+D:\Programming\C#\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Player.xnb

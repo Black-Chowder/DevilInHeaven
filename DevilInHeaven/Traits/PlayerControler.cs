@@ -18,9 +18,11 @@ namespace DevilInHeaven.Traits
         public Keys jump { get; set; } = Keys.Space;
         public Keys dash { get; set; } = Keys.OemPeriod;
 
-        public bool isKeyboardControled { get; set; } = true;
+        public bool isKeyboardControled { get; set; } = false;
         public int controlerNumber { get; set; } = 0;
         private const float deadZone = 0f;
+
+        public GamePadState gamePadState { get; set; }
 
         public PlayerControler(Player parent) : base(parent)
         {
@@ -35,7 +37,29 @@ namespace DevilInHeaven.Traits
 
         private void gamepadControls(GameTime gameTime)
         {
-            //TODO
+            if (gamePadState == null || !gamePadState.IsConnected)
+                return;
+
+            Vector2 leftStick = gamePadState.ThumbSticks.Left;
+            leftStick = new Vector2(leftStick.X, -leftStick.Y);
+            float target = MathF.Atan2(leftStick.Y, leftStick.X);
+            float determination = General.getDistance(leftStick, Vector2.Zero);
+
+            parent.movement.Move(gameTime, target, determination);
+
+
+            if (gamePadState.IsButtonDown(Buttons.A) || gamePadState.IsButtonDown(Buttons.B))
+            {
+                if (parent.wallSlider.isSliding)
+                    parent.wallJumper.Jump();
+                else
+                    parent.movement.Jump(gameTime);
+            }
+
+            if (gamePadState.IsButtonDown(Buttons.RightShoulder))
+            {
+                parent.dasher.Dash(parent.isFacingRight ? 0 : MathF.PI);
+            }
         }
 
         private void keyboardControls(GameTime gameTime)
