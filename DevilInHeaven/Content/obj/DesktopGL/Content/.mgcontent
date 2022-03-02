@@ -4,7 +4,7 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
   </SourceFiles>
   <DestFiles>
     <File>Player.png</File>

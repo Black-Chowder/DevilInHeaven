@@ -8,14 +8,14 @@ namespace DevilInHeaven.Data
     {
         public string name { get; set; }
         public int[][] tiles { get; set; }
-        public Player[] players { get; set; }
+        public PlayerData[] players { get; set; }
         public MapData() { }
     }
-    public class Player
+    public class PlayerData
     {
         public bool isAngel { get; set; }
         public int x { get; set; }
         public int y { get; set; }
-        public Player() { }
+        public PlayerData() { }
     }
 }
