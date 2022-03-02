@@ -55,6 +55,20 @@ namespace DevilInHeaven.Entities
             }
         }
 
+        //Creates players in requested locations
+        //First player is devil
+        public void CreatePlayers(Vector2[] playerPositions)
+        {
+            //TODO: Properly assign indecies to player controlers
+
+            players[0] = new Player(playerPositions[0].X, playerPositions[0].Y, false);
+            EntityHandler.entities.Add(players[0]);
+            for (int i = 1; i < playerCount; i++)
+            {
+                players[i] = new Player(playerPositions[i].X, playerPositions[i].Y, true);
+                EntityHandler.entities.Add(players[i]);
+            }
+        }
 
         //Note: Must update before gamePad does
         public void Update(GameTime gameTime)

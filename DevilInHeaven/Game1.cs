@@ -13,7 +13,7 @@ namespace DevilInHeaven
         private SpriteBatch _spriteBatch;
         public static PenumbraComponent penumbra;
 
-        public const bool isEditing = true;
+        public const bool isEditing = false;
 
         public Game1()
         {

@@ -29,6 +29,8 @@ namespace Black_Magic
             EntityHandler.Init();
 
             playerMaster = new PlayerMaster();
+
+            MapLoader.LoadMap(DevilInHeaven.Properties.Resources.TestMap);
         }
 
         public static void Update(GameTime gameTime)
