@@ -16,6 +16,9 @@ namespace DevilInHeaven.Entities
 
         public Map(MapData mapData) : base(0, 0)
         {
+
+            tileScale = mapData.scale;
+            tileSize = mapData.tileSize / tileScale;
             //Create platforms
             //TODO: Create matrix, not individual platforms
             grid = mapData.tiles.As2DArray();

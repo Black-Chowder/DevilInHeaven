@@ -9,6 +9,8 @@ namespace DevilInHeaven.Data
         public string name { get; set; }
         public int[][] tiles { get; set; }
         public PlayerData[] players { get; set; }
+        public int scale { get; set; }
+        public int tileSize { get; set; }
         public MapData() { }
     }
     public class PlayerData

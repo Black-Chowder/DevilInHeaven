@@ -16,11 +16,11 @@ namespace DevilInHeaven.Edit
     {
         private static Point gridLoc;
         public static int scale = 6;
-        public static int tileSize = 32 * scale;
+        public static int tileSize = 16 * scale;
 
         private static int[,] grid;
-        private const int rows = 6;
-        private const int columns = 10;
+        private const int rows = 12;
+        private const int columns = 20;
         private static List<Player> players;
 
         private class Player
@@ -230,6 +230,9 @@ namespace DevilInHeaven.Edit
 
                 mapData.players[i] = playerData;
             }
+
+            mapData.scale = scale;
+            mapData.tileSize = tileSize;
 
             string serializedMapData;
             serializedMapData = JsonSerializer.Serialize(mapData);
