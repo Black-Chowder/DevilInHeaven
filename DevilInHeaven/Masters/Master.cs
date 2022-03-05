@@ -55,6 +55,7 @@ namespace Black_Magic
             //Load Font
             //font = Content.Load<SpriteFont>("DefaultFont");
             Player.LoadContent(Content);
+            Map.LoadContent(Content);
 
             //GhostPlayer.LoadContent(Content);
             //Wall.LoadContent(Content);

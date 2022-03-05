@@ -12,6 +12,8 @@ namespace DevilInHeaven
         public static GraphicsDeviceManager graphics;
         private SpriteBatch _spriteBatch;
         public static PenumbraComponent penumbra;
+        public static GraphicsDevice graphicsDevice;
+        public static SpriteBatch spriteBatch;
 
         public const bool isEditing = false;
 
@@ -44,6 +46,8 @@ namespace DevilInHeaven
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            graphicsDevice ??= GraphicsDevice;
+            spriteBatch ??= _spriteBatch;
 
             // TODO: use this.Content to load your game content here
             MasterHandler.LoadContent(Content);

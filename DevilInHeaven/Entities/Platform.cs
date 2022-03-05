@@ -13,7 +13,7 @@ namespace DevilInHeaven.Entities
         public HitRect hitbox { get; private set; }
         public Rigidbody rigidbody { get; private set; }
 
-        private const bool drawHitbox = true;
+        private const bool drawHitbox = false;
         private Texture2D hitboxTexture = null;
 
         public Platform(float x, float y, float width, float height) : base(x, y)
