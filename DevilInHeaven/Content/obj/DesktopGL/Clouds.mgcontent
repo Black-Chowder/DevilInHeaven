@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <SourceFile>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</SourceFile>
-  <SourceTime>2022-03-01T19:25:39.747474-05:00</SourceTime>
-  <DestFile>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Player.xnb</DestFile>
-  <DestTime>2022-03-05T13:18:14.8578431-05:00</DestTime>
+  <SourceFile>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png</SourceFile>
+  <SourceTime>2022-03-05T13:17:11.6922797-05:00</SourceTime>
+  <DestFile>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Clouds.xnb</DestFile>
+  <DestTime>2022-03-05T13:18:14.8149589-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2018-12-08T11:35:54-05:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

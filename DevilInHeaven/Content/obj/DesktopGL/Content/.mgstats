@@ -1,2 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
+"D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Content/Clouds.xnb","TextureProcessor","Texture2DContent",1668,458837,0.2085109
+"D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Content/HeavenTileSet16.xnb","TextureProcessor","Texture2DContent",1238,20565,0.0020259
 "D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Content/Player.xnb","TextureProcessor","Texture2DContent",569,12373,0.2273978

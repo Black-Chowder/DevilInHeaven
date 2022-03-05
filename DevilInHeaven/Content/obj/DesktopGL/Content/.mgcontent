@@ -4,9 +4,13 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
+    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png</File>
+    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png</File>
     <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>Clouds.png</File>
+    <File>HeavenTileSet16.png</File>
     <File>Player.png</File>
   </DestFiles>
 </SourceFileCollection>

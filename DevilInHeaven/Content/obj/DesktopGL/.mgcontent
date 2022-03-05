@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SourceFileCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Profile>Reach</Profile>
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
+    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png</File>
+    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png</File>
+    <File>D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
   </SourceFiles>
   <DestFiles>
+    <File>Clouds.png</File>
+    <File>HeavenTileSet16.png</File>
     <File>Player.png</File>
   </DestFiles>
 </SourceFileCollection>
