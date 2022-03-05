@@ -70,7 +70,12 @@ namespace DevilInHeaven.Edit
 
             else if (mouse.RightButton == ButtonState.Pressed)
             {
-                grid[gridLoc.Y, gridLoc.X] = 0;
+                if (gridLoc.Y >= rows || gridLoc.X >= columns)
+                {
+                    Console.WriteLine("Warning: Requested to remove tile outside bounds of map [" + gridLoc.Y + ", " + gridLoc.X + "]");
+                }
+                else
+                    grid[gridLoc.Y, gridLoc.X] = 0;
             }
 
 
