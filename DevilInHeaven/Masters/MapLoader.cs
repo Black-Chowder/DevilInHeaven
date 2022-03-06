@@ -10,7 +10,7 @@ namespace DevilInHeaven
 {
     public static class MapLoader
     {
-        public static void LoadMap(byte[] mapJson)
+        public static Map LoadMap(byte[] mapJson)
         {
             EntityHandler.entities.Clear();
 
@@ -18,6 +18,7 @@ namespace DevilInHeaven
 
             Map map = new Map(mapData);
             EntityHandler.entities.Add(map);
+            return map;
         }
     }
 }

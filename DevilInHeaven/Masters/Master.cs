@@ -14,7 +14,7 @@ namespace Black_Magic
 
         public static SpriteFont font;
 
-        public static PlayerMaster playerMaster;
+        public static GameMaster gameMaster;
 
         private const bool drawGrid = false;
 
@@ -28,7 +28,9 @@ namespace Black_Magic
             
             EntityHandler.Init();
 
-            playerMaster = new PlayerMaster();
+            gameMaster = new GameMaster();
+
+            
 
             MapLoader.LoadMap(DevilInHeaven.Properties.Resources.TestMap);
         }
@@ -37,7 +39,7 @@ namespace Black_Magic
         {
             ClickHandler.Update();
 
-            playerMaster.Update(gameTime);
+            gameMaster.Update(gameTime);
 
             //Buffer Time
             //if (gameTime.TotalGameTime.TotalSeconds > 2)

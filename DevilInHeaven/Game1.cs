@@ -15,7 +15,7 @@ namespace DevilInHeaven
         public static GraphicsDevice graphicsDevice;
         public static SpriteBatch spriteBatch;
 
-        public const bool isEditing = true;
+        public const bool isEditing = false;
 
         public Game1()
         {

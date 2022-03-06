@@ -8,7 +8,7 @@ using Microsoft.Xna.Framework.Input;
 
 namespace DevilInHeaven.Entities
 {
-    public class PlayerMaster
+    public class PlayerMaster //TODO: Remove and replace with GameMaster
     {
         public const int maxPlayers = 4;
         private Player[] players = new Player[maxPlayers];
@@ -22,7 +22,7 @@ namespace DevilInHeaven.Entities
             {
                 controlers[i] = GamePad.GetCapabilities(i);
             }
-            ControlerConnect();
+            ControllerConnect();
 
             for (int i = 0; i < playerCount; i++)
             {
@@ -34,13 +34,13 @@ namespace DevilInHeaven.Entities
             if (playerCount == 0)
             {
                 players[0] = new Player(300, 100);
-                players[0].controler.isKeyboardControled = true;
+                players[0].controller.isKeyboardControled = true;
                 EntityHandler.entities.Add(players[0]);
             }
         }
 
         //To be called when connecting players to game
-        public void ControlerConnect()
+        public void ControllerConnect()
         {
             //TODO: handle players joining and leaving without destroying their entity
             //      every frame
@@ -63,7 +63,7 @@ namespace DevilInHeaven.Entities
 
             players[0] = new Player(playerPositions[0].X, playerPositions[0].Y, false);
             EntityHandler.entities.Add(players[0]);
-            players[0].controler.isKeyboardControled = true;
+            players[0].controller.isKeyboardControled = true;
             for (int i = 1; i < playerCount; i++)
             {
                 players[i] = new Player(playerPositions[i].X, playerPositions[i].Y, true);
@@ -76,7 +76,7 @@ namespace DevilInHeaven.Entities
         {
             for (int i = 0; i < playerCount; i++)
             {
-                players[i].controler.gamePadState = GamePad.GetState(i);
+                players[i].controller.gamePadState = GamePad.GetState(i);
             }
         }
     }

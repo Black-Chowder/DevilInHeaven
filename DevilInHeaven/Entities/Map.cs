@@ -14,6 +14,10 @@ namespace DevilInHeaven.Entities
         public static int tileScale = 6;
         public static int tileSize = 32;
 
+        public readonly string name;
+
+        public readonly MapData mapData;
+
         private static int[,] grid;
 
         private static Texture2D tileSet;
@@ -24,6 +28,8 @@ namespace DevilInHeaven.Entities
 
         public Map(MapData mapData) : base(0, 0)
         {
+            this.mapData = mapData;
+            name = mapData.name;
 
             //Create platforms
             tileScale = mapData.scale;
@@ -85,6 +91,8 @@ namespace DevilInHeaven.Entities
 
 
             //Create players
+            //TODO: Handle creation of players better
+            /*
             Vector2[] playerPositions = new Vector2[4];
             int angelCount = 0;
             for (int i = 0; i < mapData.players.Length; i++) { 
@@ -97,8 +105,8 @@ namespace DevilInHeaven.Entities
                 playerPositions[1 + angelCount] = new Vector2(mapData.players[i].x, mapData.players[i].y);
                 angelCount++;
             }
-
-            MasterHandler.playerMaster.CreatePlayers(playerPositions);
+            */
+            //MasterHandler.gameMaster.playerMaster.CreatePlayers(playerPositions);
         }
 
         private static int[,] getSight(Point origin, int[,] grid)

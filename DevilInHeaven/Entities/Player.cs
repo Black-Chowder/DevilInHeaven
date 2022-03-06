@@ -22,7 +22,7 @@ namespace DevilInHeaven.Entities
         public WallSlider wallSlider { get; private set; }
         public WallJumper wallJumper { get; private set; }
         public Dasher dasher { get; private set; }
-        public PlayerControler controler { get; private set; }
+        public PlayerControler controller { get; private set; }
 
         public static Texture2D spriteSheet { get; private set; }
         protected Animator animator;
@@ -73,8 +73,8 @@ namespace DevilInHeaven.Entities
             dasher = new Dasher(this);
             addTrait(dasher);
 
-            controler = new PlayerControler(this);
-            addTrait(controler);
+            controller = new PlayerControler(this);
+            addTrait(controller);
         }
 
         public static void LoadContent(ContentManager Content)
