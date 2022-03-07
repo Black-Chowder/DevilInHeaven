@@ -44,19 +44,20 @@ namespace DevilInHeaven
             }
 
             //New player
-            if (deltaPlayerCount < playerCount)
+            for (int i = deltaPlayerCount; i < playerCount; i++)
             {
-                Console.WriteLine("Player [" + playerCount + "] connected");
+                Console.WriteLine("Player [" + i + "] connected");
 
-                players[playerCount - 1] = new Player(
-                    map.mapData.players[playerCount - 1].x,
-                    map.mapData.players[playerCount - 1].y);
+                players[i] = new Player(
+                    map.mapData.players[i].x,
+                    map.mapData.players[i].y);
 
-                EntityHandler.entities.Add(players[playerCount - 1]);
+                EntityHandler.entities.Add(players[i]);
             }
 
             //Player disconnected
-            else if (deltaPlayerCount > playerCount)
+            //TODO: Handle multiple controllers disconnecting at the same time
+            if (deltaPlayerCount > playerCount)
             {
                 Console.WriteLine("Player [" + playerCount + "] disconnected");
                 EntityHandler.entities.Remove(players[playerCount]);

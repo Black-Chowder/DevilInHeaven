@@ -104,7 +104,7 @@ namespace DevilInHeaven.Entities
                     new Vector2(0, 0),
                     hitbox.width * Camera.gameScale,
                     SpriteEffects.None,
-                    0f);
+                    .8f);
             }
 
             animator.Draw(spriteBatch, x, y);

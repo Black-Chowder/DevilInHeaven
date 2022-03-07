@@ -28,15 +28,14 @@ namespace Black_Magic
             
             EntityHandler.Init();
 
-            gameMaster = new GameMaster();
-
-            
-
             MapLoader.LoadMap(DevilInHeaven.Properties.Resources.TestMap);
         }
 
         public static void Update(GameTime gameTime)
         {
+            gameMaster ??= new GameMaster(); //TODO: Have this handled by home screen instead
+                                             // of auto creating it
+
             ClickHandler.Update();
 
             gameMaster.Update(gameTime);
