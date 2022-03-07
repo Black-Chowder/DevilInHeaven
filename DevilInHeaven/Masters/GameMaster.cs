@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Black_Magic;
+using DevilInHeaven.Data;
 using DevilInHeaven.Entities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
@@ -9,20 +10,34 @@ using Microsoft.Xna.Framework.Input;
 namespace DevilInHeaven
 {
     //Handles game stuff like initial connection, player stats and whatnot
-    public class GameMaster : Entity
+    public class GameMaster
     {
         public int[] scores = new int[PlayerMaster.maxPlayers];
 
         public PlayerMaster playerMaster = new PlayerMaster();
 
         private Map map;
-        private bool inWaitingRoom { get => map.name == "Waiting Room"; }
+        private const int totalMaps = 5;
+        public bool gameStart { get; private set; }
 
         public Player[] players = new Player[4];
         public int playerCount = 0;
         private int deltaPlayerCount = 0;
+        private int devilIndex = 0;
 
-        public GameMaster() : base(0, 0)
+        public int phase { get; private set; } = CONNECTING; //Indicates how to control players
+        private const int CONNECTING = 0; //In waiting area waiting for controllers to connect
+        private const int WAITING = 1; //In waiting area (for character assignment)
+        private const int PREGAME = 2; //In map but can't move
+        private const int INGAME = 3;  //In map and playing
+        private const int POSTGAME = 4;//Devil is dead but still in map
+
+        private double timer = 0d;
+        private const double waitingTimer = 5d * 1000d;
+
+        private Random rand = new Random();
+
+        public GameMaster()
         {
             ConnectPlayers();
         }
@@ -32,6 +47,7 @@ namespace DevilInHeaven
         {
             //Load waiting room
             map ??= MapLoader.LoadMap(Properties.Resources.WaitingRoom);
+            phase = CONNECTING;
 
             //Enable players to connect
             deltaPlayerCount = playerCount;
@@ -63,16 +79,15 @@ namespace DevilInHeaven
                 EntityHandler.entities.Remove(players[playerCount]);
                 players[playerCount] = null;
             }
+
+            //Start game
+            if (playerCount > 0 && players[0].controller.startPressed)
+            {
+                NewRound();
+            }
         }
 
-        //Starts game (duh)
-        //  May not need this.  Maybe just construct new GameMaster for every game
-        public void StartGame()
-        {
-            //Send to waiting area
-        }
-
-        public override void Update(GameTime gameTime)
+        public void Update(GameTime gt)
         {
             //Feed inputs into players
             for (int i = 0; i < playerCount; i++)
@@ -80,25 +95,157 @@ namespace DevilInHeaven
                 players[i].controller.gamePadState = GamePad.GetState(i);
             }
 
-            //Handle waiting room
-            if (inWaitingRoom)
-            {
-                ConnectPlayers();
-                return;
-            }
+            Player[] angels;
+            int angelCount;
 
-            //If in game, if devil is caught,
-            //  send to waiting area for next round
+            switch (phase)
+            {
+                //Waiting Room
+                case CONNECTING:
+                    ConnectPlayers();
+                    break;
+
+                //Round behavior
+                case WAITING:
+                    //Increment Timer
+                    timer -= gt.ElapsedGameTime.TotalMilliseconds;
+
+                    //After alloted time, load new map
+                    if (timer > 0) break;
+                    timer = waitingTimer;
+                    //TODO: Add smooth transition
+
+                    map = MapLoader.LoadMap(getMap(rand.Next(1, totalMaps + 1)));
+
+                    //Spawn devil
+                    players[devilIndex].x = map.playerPositions[0].X;
+                    players[devilIndex].y = map.playerPositions[0].Y;
+                    players[devilIndex].isAngel = false;
+
+                    //Spawn angels
+                    angels = new Player[playerCount - 1];
+                    angelCount = 0;
+                    for (int i = 0; i < 4; i++)
+                    {
+                        if (players[i] is null || !players[i].isAngel)
+                            continue;
+                        angels[angelCount] = players[i];
+                        angelCount++;
+                    }
+                    rand.Shuffle(angels);
+                    for (int i = 0; i < playerCount - 1; i++)
+                    {
+                        if (angels[i] is null)
+                            continue;
+                        angels[i].x = map.playerPositions[i + 1].X;
+                        angels[i].y = map.playerPositions[i + 1].Y;
+                        angels[i].isAngel = true;
+                    }
+
+                    for (int i = 0; i < playerCount; i++)
+                        EntityHandler.entities.Add(players[i]);
+
+
+                    //Deactivate player movement
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        players[i].controller.isActive = false;
+                        players[i].gravity.isActive = false;
+                        players[i].dx = 0;
+                        players[i].dy = 0;
+                    }
+
+                    phase = PREGAME;
+                    break;
+
+                case PREGAME:
+                    //Increment Timer
+                    timer -= gt.ElapsedGameTime.TotalMilliseconds;
+
+                    //After alloted time, load new map
+                    if (timer > 0) break;
+                    timer = waitingTimer;
+
+                    //Reactivate player movement
+                    for (int i = 0; i < playerCount; i++)
+                    {
+                        players[i].controller.isActive = true;
+                        players[i].gravity.isActive = true;
+                    }
+
+                    phase = INGAME;
+
+                    break;
+                case INGAME:
+                    //If in game, if devil is caught,
+                    //  send to waiting area for next round
+                    break;
+                case POSTGAME:
+
+                    break;
+            }
         }
 
         public void NewRound()
         {
-            //Send to waiting area for players to re-establish themselves
-            
-            //After alloted time, load new map
+            gameStart = true;
+            phase = WAITING;
+            timer = waitingTimer;
+            EntityHandler.entities.Clear();
+            map = MapLoader.LoadMap(Properties.Resources.WaitingRoom);
 
-            //Be sure to have the players not able to move for the first
-            //  few seconds
+            //Assign players angles / devils
+            devilIndex = rand.Next(0, playerCount);
+            Console.WriteLine("New Round Started.  Player [" + devilIndex + "] is devil");
+
+
+            //Spawn devil
+            players[devilIndex].x = map.playerPositions[0].X;
+            players[devilIndex].y = map.playerPositions[0].Y;
+            players[devilIndex].isAngel = false;
+
+            //Spawn angels
+            Player[] angels;
+            int angelCount;
+            angels = new Player[playerCount - 1];
+            angelCount = 0;
+            for (int i = 0; i < 4; i++)
+            {
+                if (players[i] is null || !players[i].isAngel)
+                    continue;
+                angels[angelCount] = players[i];
+                angelCount++;
+            }
+            rand.Shuffle(angels);
+            for (int i = 0; i < playerCount - 1; i++)
+            {
+                if (angels[i] is null)
+                    continue;
+                angels[i].x = map.playerPositions[i + 1].X;
+                angels[i].y = map.playerPositions[i + 1].Y;
+                angels[i].isAngel = true;
+            }
+
+            for (int i = 0; i < playerCount; i++)
+                EntityHandler.entities.Add(players[i]);
+        }
+
+        private byte[] getMap(int index)
+        {
+            switch (index)
+            {
+                case 1: 
+                    return Properties.Resources.Map1;
+                case 2:
+                    return Properties.Resources.Map2;
+                case 3:
+                    return Properties.Resources.Map3;
+                case 4:
+                    return Properties.Resources.Map4;
+                case 5:
+                    return Properties.Resources.Map5;
+            }
+            return null;
         }
     }
 }

@@ -21,6 +21,7 @@ namespace DevilInHeaven.Traits
         public bool isKeyboardControled { get; set; } = false;
         public int controlerNumber { get; set; } = 0;
         private const float deadZone = 0f;
+        public bool startPressed { get; private set; } = false;
 
         public GamePadState gamePadState { get; set; }
 
@@ -60,6 +61,8 @@ namespace DevilInHeaven.Traits
             {
                 parent.dasher.Dash(parent.isFacingRight ? 0 : MathF.PI);
             }
+
+            startPressed = gamePadState.IsButtonDown(Buttons.Start);
         }
 
         private void keyboardControls(GameTime gameTime)

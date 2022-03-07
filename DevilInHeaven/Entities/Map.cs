@@ -17,6 +17,7 @@ namespace DevilInHeaven.Entities
         public readonly string name;
 
         public readonly MapData mapData;
+        public readonly Point[] playerPositions;
 
         private static int[,] grid;
 
@@ -91,6 +92,30 @@ namespace DevilInHeaven.Entities
 
 
             //Create players
+            playerPositions = new Point[4];
+            int pointCount = 1;
+            for (int i = 0; i < 4; i++)
+            {
+                if (mapData.players[i].isAngel)
+                    continue;
+                playerPositions[0] = new Point(
+                    mapData.players[i].x,
+                    mapData.players[i].y);
+                break;
+            }
+            
+            for (int i = 0; i < 4; i++)
+            {
+                if (!mapData.players[i].isAngel)
+                    continue;
+                playerPositions[pointCount] = new Point(
+                    mapData.players[i].x,
+                    mapData.players[i].y);
+                pointCount++;
+            }
+
+
+
             //TODO: Handle creation of players better
             /*
             Vector2[] playerPositions = new Vector2[4];

@@ -27,7 +27,19 @@ namespace DevilInHeaven.Entities
         public static Texture2D spriteSheet { get; private set; }
         protected Animator animator;
 
-        public bool isAngel;
+        private const string angelAnimationName = "angel";
+        private const string devilAnimationName = "devil";
+
+        private bool _isAngel;
+        public bool isAngel 
+        {
+            get => _isAngel;
+            set
+            {
+                _isAngel = value;
+                animator.SetAnimation(_isAngel ? angelAnimationName : devilAnimationName);
+            } 
+        }
 
         public bool isFacingRight = true;
 
@@ -39,14 +51,15 @@ namespace DevilInHeaven.Entities
         {
             width = 32;
             height = width;
-            this.isAngel = isAngel;
 
             animator = new Animator(spriteSheet, new Rectangle(32, 32, 2, 1));
-            animator.AddAnimation("devil", 0, 0);
-            animator.AddAnimation("angel", 3, 2);
-            animator.SetAnimation(isAngel ? "angel" : "devil");
+            animator.AddAnimation(devilAnimationName, 0, 0);
+            animator.AddAnimation(angelAnimationName, 3, 2);
+            animator.SetAnimation(isAngel ? angelAnimationName : devilAnimationName);
             animator.isFacingRight = true;
             animator.scale = 6;
+
+            this.isAngel = isAngel;
 
 
             hitbox = new HitRect(this, new Rectangle((int)(-width / 2f), (int)height, (int)width, (int)height));
