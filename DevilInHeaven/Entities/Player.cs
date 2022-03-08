@@ -24,6 +24,7 @@ namespace DevilInHeaven.Entities
         public Dasher dasher { get; private set; }
         public PlayerControler controller { get; private set; }
         public CaughtDevil caughtDevil { get; private set; }
+        public StageLooper stageLooper { get; private set; }
 
         public static Texture2D spriteSheet { get; private set; }
         protected Animator animator;
@@ -118,6 +119,9 @@ namespace DevilInHeaven.Entities
 
             caughtDevil = new CaughtDevil(this);
             addTrait(caughtDevil);
+
+            stageLooper = new StageLooper(this);
+            addTrait(stageLooper);
         }
 
         public static void LoadContent(ContentManager Content)
