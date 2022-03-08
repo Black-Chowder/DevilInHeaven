@@ -59,7 +59,7 @@ namespace DevilInHeaven.Entities
         public bool isFacingRight = true;
 
         //Testing Variables
-        private const bool drawHitbox = true;
+        private const bool drawHitbox = false;
         private Texture2D hitboxTexture = null;
 
         public Player(float x, float y, bool isAngel = true) : base(x, y)
@@ -72,7 +72,7 @@ namespace DevilInHeaven.Entities
             animator.AddAnimation(angelAnimationName, 3, 2);
             animator.SetAnimation(isAngel ? angelAnimationName : devilAnimationName);
             animator.isFacingRight = true;
-            animator.scale = 4;
+            animator.scale = 3;
 
             iconAnimator = new Animator(spriteSheet, new Rectangle(32, 32, 11, 1));
             iconAnimator.AddAnimation("a1", 4, 3);
@@ -151,10 +151,10 @@ namespace DevilInHeaven.Entities
                     new Vector2(0, 0),
                     hitbox.width * Camera.gameScale,
                     SpriteEffects.None,
-                    .8f);
+                    0.1f);
             }
 
-            animator.Draw(spriteBatch, x, y);
+            animator.Draw(spriteBatch, x, y + 40); //THIS TOTALLY SHOULDN'T BE HARDCODED, BUT I CAN'T BE BOTHERED RIGHT NOW
 
             if (displayId) iconAnimator.Draw(spriteBatch, x, y - height);
         }
