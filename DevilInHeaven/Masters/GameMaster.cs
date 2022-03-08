@@ -260,6 +260,7 @@ namespace DevilInHeaven
                     continue;
                 players[i].x = map.playerPositions[i].X;
                 players[i].y = map.playerPositions[i].Y;
+                players[i].playerId = i;
             }
 
             for (int i = 0; i < playerCount; i++)
