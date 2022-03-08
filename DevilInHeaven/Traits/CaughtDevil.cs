@@ -10,14 +10,19 @@ namespace DevilInHeaven.Traits
 {
     public class CaughtDevil : Trait<Player>
     {
+        public bool externallyAssigned = false;
         public bool isCaught = false;
 
         public CaughtDevil(Player parent) : base(parent) { }
 
         public override void Update(GameTime gameTime)
         {
-            if (parent.isAngel)
+            if (externallyAssigned)
+            {
+                externallyAssigned = false;
+                isCaught = true;
                 return;
+            }
 
             isCaught = false;
             Player[] players = MasterHandler.gameMaster.players;
@@ -30,6 +35,8 @@ namespace DevilInHeaven.Traits
                 if (parent.rigidbody.hitboxes[0].GetEntitiesTouching().Contains(players[i]))
                 {
                     isCaught = true;
+                    players[i].caughtDevil.isCaught = true;
+                    players[i].caughtDevil.externallyAssigned = true;
                     return;
                 }
             }
