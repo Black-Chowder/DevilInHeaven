@@ -31,9 +31,13 @@ namespace DevilInHeaven
         private const int PREGAME = 2; //In map but can't move
         private const int INGAME = 3;  //In map and playing
         private const int POSTGAME = 4;//Devil is dead but still in map
+        private const int WIN = 5; //Win screen
 
         private double timer = 0d;
         private const double waitingTimer = 5d * 1000d;
+
+        public int roundsPlayed { get; private set; } = 0;
+        public static int roundsPerGame = 5;
 
         private Random rand = new Random();
 
@@ -81,7 +85,7 @@ namespace DevilInHeaven
             }
 
             //Start game
-            if (playerCount > 0 && players[0].controller.startPressed)
+            if (playerCount > 1 && players[0].controller.startPressed)
             {
                 NewRound();
             }
@@ -171,17 +175,33 @@ namespace DevilInHeaven
                     {
                         players[i].controller.isActive = true;
                         players[i].gravity.isActive = true;
+
+                        players[i].caughtDevil.isCaught = false;
                     }
 
                     phase = INGAME;
 
                     break;
                 case INGAME:
-                    //If in game, if devil is caught,
-                    //  send to waiting area for next round
+                    if (players[devilIndex].caughtDevil.isCaught)
+                        phase = POSTGAME;
+
                     break;
                 case POSTGAME:
+                    //Increment Timer
+                    timer -= gt.ElapsedGameTime.TotalMilliseconds;
 
+                    //After alloted time, load new map
+                    if (timer > 0) break;
+                    timer = waitingTimer;
+
+                    if (roundsPlayed >= roundsPerGame)
+                        phase = WIN;
+                    else
+                        NewRound();
+                    break;
+                case WIN:
+                    //TODO
                     break;
             }
         }
@@ -198,7 +218,10 @@ namespace DevilInHeaven
             devilIndex = rand.Next(0, playerCount);
             Console.WriteLine("New Round Started.  Player [" + devilIndex + "] is devil");
 
-
+            for (int i = 0; i < playerCount; i++)
+            {
+                players[i].isAngel = true;
+            }
             //Spawn devil
             players[devilIndex].x = map.playerPositions[0].X;
             players[devilIndex].y = map.playerPositions[0].Y;

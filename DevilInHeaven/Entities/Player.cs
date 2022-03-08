@@ -23,6 +23,7 @@ namespace DevilInHeaven.Entities
         public WallJumper wallJumper { get; private set; }
         public Dasher dasher { get; private set; }
         public PlayerControler controller { get; private set; }
+        public CaughtDevil caughtDevil { get; private set; }
 
         public static Texture2D spriteSheet { get; private set; }
         protected Animator animator;
@@ -88,6 +89,9 @@ namespace DevilInHeaven.Entities
 
             controller = new PlayerControler(this);
             addTrait(controller);
+
+            caughtDevil = new CaughtDevil(this);
+            addTrait(caughtDevil);
         }
 
         public static void LoadContent(ContentManager Content)
