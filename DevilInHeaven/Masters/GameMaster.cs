@@ -87,6 +87,7 @@ namespace DevilInHeaven
             //Start game
             if (playerCount > 1 && players[0].controller.startPressed)
             {
+                Console.WriteLine("\n == Game Has Begun == ");
                 NewRound();
             }
         }
@@ -184,8 +185,11 @@ namespace DevilInHeaven
                     break;
                 case INGAME:
                     if (players[devilIndex].caughtDevil.isCaught)
+                    {
                         phase = POSTGAME;
-
+                        Console.WriteLine("Devil Caught");
+                    }
+                        
                     break;
                 case POSTGAME:
                     //Increment Timer
@@ -214,7 +218,7 @@ namespace DevilInHeaven
             EntityHandler.entities.Clear();
             map = MapLoader.LoadMap(Properties.Resources.WaitingRoom);
 
-            //Assign players angles / devils
+            //Assign players angles / devils (can definitely be made more efficient, but I can't be bothered right now)
             devilIndex = rand.Next(0, playerCount);
             Console.WriteLine("New Round Started.  Player [" + devilIndex + "] is devil");
 
@@ -247,6 +251,15 @@ namespace DevilInHeaven
                 angels[i].x = map.playerPositions[i + 1].X;
                 angels[i].y = map.playerPositions[i + 1].Y;
                 angels[i].isAngel = true;
+            }
+
+            //Place players in correct position
+            for (int i = 0; i < playerCount; i++)
+            {
+                if (players[i] is null)
+                    continue;
+                players[i].x = map.playerPositions[i].X;
+                players[i].y = map.playerPositions[i].Y;
             }
 
             for (int i = 0; i < playerCount; i++)

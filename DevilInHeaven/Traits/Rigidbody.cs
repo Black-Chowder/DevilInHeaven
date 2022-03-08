@@ -9,10 +9,22 @@ namespace Black_Magic
     {
         public Entity parent { get; protected set; }
 
+        //TODO: Convert this to generics that extend Entity
+        //TODO: Make this exclusive to the HitRect
         public Entity left;
         public Entity right;
         public Entity top;
         public Entity bottom;
+
+        public List<Entity> GetEntitiesTouching()
+        {
+            List<Entity> toReturn = new List<Entity>();
+            if (!(left is null)) toReturn.Add(left);
+            if (!(right is null)) toReturn.Add(right);
+            if (!(top is null)) toReturn.Add(top);
+            if (!(bottom is null)) toReturn.Add(bottom);
+            return toReturn;
+        }
 
         public Hitbox(Entity parent)
         {

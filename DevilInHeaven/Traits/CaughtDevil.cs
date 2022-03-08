@@ -25,16 +25,9 @@ namespace DevilInHeaven.Traits
             {
                 if (players[i] == parent)
                     continue;
+
                 
-                if (General.rectCollision(
-                    players[i].hitbox.absX, 
-                    players[i].hitbox.absY,
-                    players[i].hitbox.width,
-                    players[i].hitbox.height,
-                    parent.hitbox.absX,
-                    parent.hitbox.absY,
-                    parent.hitbox.width,
-                    parent.hitbox.height))
+                if (parent.rigidbody.hitboxes[0].GetEntitiesTouching().Contains(players[i]))
                 {
                     isCaught = true;
                     return;
