@@ -133,7 +133,6 @@ namespace DevilInHeaven.Entities
             animator.gameScale = Camera.gameScale;
             animator.Update(gameTime);
 
-            iconAnimator.isFacingRight = isFacingRight;
             iconAnimator.gameScale = Camera.gameScale;
             iconAnimator.Update(gameTime);
         }

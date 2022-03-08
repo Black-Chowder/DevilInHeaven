@@ -46,6 +46,9 @@ namespace DevilInHeaven.Traits
             float target = MathF.Atan2(leftStick.Y, leftStick.X);
             float determination = General.getDistance(leftStick, Vector2.Zero);
 
+            if (leftStick.X != 0)
+                parent.isFacingRight = leftStick.X > 0;
+
             parent.movement.Move(gameTime, target, determination);
 
 
