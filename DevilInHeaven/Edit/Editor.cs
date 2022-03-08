@@ -186,7 +186,7 @@ namespace DevilInHeaven.Edit
             for (int i = 0; i < players.Count; i++)
             {
                 spriteBatch.Draw(General.createTexture(graphicsDevice),
-                    new Vector2(players[i].x - Player.size / 4, players[i].y - Player.size / 4),
+                    new Vector2((players[i].x - Player.size / 4) * Camera.gameScale, (players[i].y - Player.size / 4) * Camera.gameScale),
                     new Rectangle(0, 0, 1, 1),
                     players[i].isAngel ? Color.Blue : Color.Red,
                     0,
@@ -229,8 +229,8 @@ namespace DevilInHeaven.Edit
             for (int i = 0; i < 4; i++)
             {
                 PlayerData playerData = new PlayerData();
-                playerData.x = players[i].x;
-                playerData.y = players[i].y;
+                playerData.x = (int)(players[i].x / Camera.gameScale);
+                playerData.y = (int)(players[i].y / Camera.gameScale);
                 playerData.isAngel = players[i].isAngel;
 
                 mapData.players[i] = playerData;
