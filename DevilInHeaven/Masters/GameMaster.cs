@@ -37,7 +37,8 @@ namespace DevilInHeaven
         private const double waitingTimer = 5d * 1000d;
 
         public int roundsPlayed { get; private set; } = 0;
-        public static int roundsPerGame = 3;
+        public int roundsPerPlayer = 1;
+        private List<int> devilTurns;
 
         public bool GameOver { get; private set; } = false;
 
@@ -90,8 +91,16 @@ namespace DevilInHeaven
             if (playerCount > 1 && players[0].controller.startPressed)
             {
                 Console.WriteLine("\n == Game Has Begun == ");
+
                 for (int i = 0; i < playerCount; i++)
-                    players[i].score = i;
+                    players[i].score = 0;
+
+                //Initialize times devil gets to play
+                devilTurns = new List<int>(playerCount * roundsPerPlayer);
+                for (int i = 0; i < playerCount; i++)
+                    for (int j = 0; j < roundsPerPlayer; j++)
+                        devilTurns.Add(i);
+
                 NewRound();
             }
         }
@@ -188,6 +197,7 @@ namespace DevilInHeaven
 
                     break;
                 case INGAME:
+                    players[devilIndex].score += gt.ElapsedGameTime.TotalSeconds;
                     if (players[devilIndex].caughtDevil.isCaught)
                     {
                         phase = POSTGAME;
@@ -203,14 +213,18 @@ namespace DevilInHeaven
                     if (timer > 0) break;
                     timer = waitingTimer * 5;
 
-                    if (roundsPlayed >= roundsPerGame)
+                    if (roundsPlayed >= roundsPerPlayer * playerCount)
                     {
                         map = MapLoader.LoadMap(Properties.Resources.Win);
+
+                        Console.WriteLine("Final Scores:");
+                        for (int i = 0; i < playerCount; i++)
+                            Console.WriteLine("\tPlayer[" + i + "] score = " + players[i].score);
 
                         List<Player> pList = new List<Player>(playerCount);
                         for (int i = 0; i < playerCount; i++)
                             pList.Add(players[i]);
-                        pList.Sort((p1, p2) => p1.score.CompareTo(p2.score));
+                        pList.Sort((p1, p2) => p2.score.CompareTo(p1.score));
                         for (int i = 0; i < playerCount; i++)
                         {
                             pList[i].x = map.mapData.players[i].x;
@@ -252,8 +266,12 @@ namespace DevilInHeaven
             //Assign players angles / devils (can definitely be made more efficient, but I can't be bothered right now)
             //TODO: Change devilIndex to not be truely random but randomly select index from set of indecies so that everyone
             //      gets to play devil same # of times
-            devilIndex = rand.Next(0, playerCount);
-            Console.WriteLine("New Round Started.  Player [" + devilIndex + "] is devil");
+            int devilTurnsIndex = rand.Next(devilTurns.Count);
+            devilIndex = devilTurns[devilTurnsIndex];
+            devilTurns.RemoveAt(devilTurnsIndex);
+            Console.WriteLine("Round " + roundsPlayed + " started.  Player [" + devilIndex + "] is devil");
+            for (int i = 0; i < playerCount; i++)
+                Console.WriteLine("\tPlayer[" + i + "] score = " + players[i].score);
 
             for (int i = 0; i < playerCount; i++)
             {

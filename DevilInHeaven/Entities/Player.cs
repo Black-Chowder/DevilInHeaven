@@ -57,7 +57,7 @@ namespace DevilInHeaven.Entities
             }
         }
 
-        public int score { get; set; } = 0;
+        public double score { get; set; } = 0;
 
         public bool isFacingRight = true;
 
