@@ -37,7 +37,9 @@ namespace DevilInHeaven
         private const double waitingTimer = 5d * 1000d;
 
         public int roundsPlayed { get; private set; } = 0;
-        public static int roundsPerGame = 5;
+        public static int roundsPerGame = 3;
+
+        public bool GameOver { get; private set; } = false;
 
         private Random rand = new Random();
 
@@ -88,6 +90,8 @@ namespace DevilInHeaven
             if (playerCount > 1 && players[0].controller.startPressed)
             {
                 Console.WriteLine("\n == Game Has Begun == ");
+                for (int i = 0; i < playerCount; i++)
+                    players[i].score = i;
                 NewRound();
             }
         }
@@ -197,15 +201,41 @@ namespace DevilInHeaven
 
                     //After alloted time, load new map
                     if (timer > 0) break;
-                    timer = waitingTimer;
+                    timer = waitingTimer * 5;
 
                     if (roundsPlayed >= roundsPerGame)
+                    {
+                        map = MapLoader.LoadMap(Properties.Resources.Win);
+
+                        List<Player> pList = new List<Player>(playerCount);
+                        for (int i = 0; i < playerCount; i++)
+                            pList.Add(players[i]);
+                        pList.Sort((p1, p2) => p1.score.CompareTo(p2.score));
+                        for (int i = 0; i < playerCount; i++)
+                        {
+                            pList[i].x = map.mapData.players[i].x;
+                            pList[i].y = map.mapData.players[i].y;
+                            pList[i].isAngel = i != 0;
+                            pList[i].dx = 0;
+                            pList[i].dy = 0;
+                            players[i].caughtDevil.isCaught = false;
+                            players[i].caughtDevil.canBeCaught = false;
+                            EntityHandler.entities.Add(players[i]);
+                        }
+                        Console.WriteLine(" == Game Over == \n");
+
                         phase = WIN;
+                    }
                     else
                         NewRound();
                     break;
                 case WIN:
-                    //TODO
+                    timer -= gt.ElapsedGameTime.TotalMilliseconds;
+
+                    if (timer > 0) break;
+                    timer = waitingTimer;
+
+                    GameOver = true;
                     break;
             }
         }
@@ -215,10 +245,13 @@ namespace DevilInHeaven
             gameStart = true;
             phase = WAITING;
             timer = waitingTimer;
+            roundsPlayed++;
             EntityHandler.entities.Clear();
             map = MapLoader.LoadMap(Properties.Resources.WaitingRoom);
 
             //Assign players angles / devils (can definitely be made more efficient, but I can't be bothered right now)
+            //TODO: Change devilIndex to not be truely random but randomly select index from set of indecies so that everyone
+            //      gets to play devil same # of times
             devilIndex = rand.Next(0, playerCount);
             Console.WriteLine("New Round Started.  Player [" + devilIndex + "] is devil");
 

@@ -129,5 +129,15 @@ namespace DevilInHeaven.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        public static byte[] Win {
+            get {
+                object obj = ResourceManager.GetObject("Win", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

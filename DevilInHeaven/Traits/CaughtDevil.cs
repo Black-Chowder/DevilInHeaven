@@ -10,12 +10,14 @@ namespace DevilInHeaven.Traits
 {
     public class CaughtDevil : Trait<Player>
     {
+        public bool canBeCaught { get; set; } = true;
         private bool _isCaught = false;
         public bool isCaught 
         { 
             get => _isCaught;
             set 
             {
+                if (!canBeCaught) return;
                 _isCaught = value;
                 parent.controller.isActive = true;
                 if (!parent.isAngel)

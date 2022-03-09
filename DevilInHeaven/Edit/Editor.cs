@@ -94,7 +94,7 @@ namespace DevilInHeaven.Edit
 
                 if (!didCollide)
                 {
-                    Player player = new Player(mouse.X, mouse.Y, true);
+                    Player player = new Player((int)(mouse.X / Camera.gameScale), (int)(mouse.Y / Camera.gameScale), true);
                     players.Add(player);
                 }
             }
@@ -112,7 +112,7 @@ namespace DevilInHeaven.Edit
                 
                 if (!didCollide)
                 {
-                    Player player = new Player(mouse.X, mouse.Y, false);
+                    Player player = new Player((int)(mouse.X / Camera.gameScale), (int)(mouse.Y / Camera.gameScale), false);
                     players.Add(player);
                 }
             }
