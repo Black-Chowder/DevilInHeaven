@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PipelineBuildEvent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <SourceFile>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</SourceFile>
-  <SourceTime>2022-03-08T22:00:51.1196759-05:00</SourceTime>
-  <DestFile>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Player.xnb</DestFile>
-  <DestTime>2022-03-09T18:33:45.5829215-05:00</DestTime>
+  <SourceFile>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartButton.png</SourceFile>
+  <SourceTime>2022-03-09T18:33:18.4376401-05:00</SourceTime>
+  <DestFile>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/StartButton.xnb</DestFile>
+  <DestTime>2022-03-09T18:33:45.5881957-05:00</DestTime>
   <Importer>TextureImporter</Importer>
   <ImporterTime>2020-08-10T16:17:54-04:00</ImporterTime>
   <Processor>TextureProcessor</Processor>

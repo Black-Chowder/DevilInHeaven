@@ -7,10 +7,14 @@
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartButton.png</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartScreen.png</File>
   </SourceFiles>
   <DestFiles>
     <File>Clouds.png</File>
     <File>HeavenTileSet16.png</File>
     <File>Player.png</File>
+    <File>StartButton.png</File>
+    <File>StartScreen.png</File>
   </DestFiles>
 </SourceFileCollection>

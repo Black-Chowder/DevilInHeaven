@@ -37,7 +37,7 @@ namespace DevilInHeaven
         private const double waitingTimer = 5d * 1000d;
 
         public int roundsPlayed { get; private set; } = 0;
-        public int roundsPerPlayer = 1;
+        public int roundsPerPlayer = 5;
         private List<int> devilTurns;
 
         public bool GameOver { get; private set; } = false;
