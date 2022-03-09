@@ -1,4 +1,4 @@
 Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Clouds.xnb","TextureProcessor","Texture2DContent",1668,458837,0.3570535
-"D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/HeavenTileSet16.xnb","TextureProcessor","Texture2DContent",1238,20565,0.0089768
-"D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png","D:/Programming/C#/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Player.xnb","TextureProcessor","Texture2DContent",771,45141,0.0029927
+"C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Clouds.png","C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Clouds.xnb","TextureProcessor","Texture2DContent",1668,458837,0.4905465
+"C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/HeavenTileSet16.png","C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/HeavenTileSet16.xnb","TextureProcessor","Texture2DContent",1238,20565,0.0084018
+"C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png","C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/bin/DesktopGL/Player.xnb","TextureProcessor","Texture2DContent",818,45141,0.0076221

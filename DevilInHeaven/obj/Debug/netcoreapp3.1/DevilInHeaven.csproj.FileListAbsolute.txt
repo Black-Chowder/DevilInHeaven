@@ -56,3 +56,5 @@ D:\Programming\C#\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHea
 D:\Programming\C#\DevilInHeaven\DevilInHeaven\obj\Debug\netcoreapp3.1\DevilInHeaven.csproj.GenerateResource.cache
 D:\Programming\C#\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Clouds.xnb
 D:\Programming\C#\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\HeavenTileSet16.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Clouds.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\HeavenTileSet16.xnb

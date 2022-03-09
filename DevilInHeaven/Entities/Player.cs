@@ -27,7 +27,7 @@ namespace DevilInHeaven.Entities
         public StageLooper stageLooper { get; private set; }
 
         public static Texture2D spriteSheet { get; private set; }
-        protected Animator animator;
+        public Animator animator { get; private set; }
         public bool displayId { get; set; } = true;
         public Animator iconAnimator { get; private set; }
 
@@ -68,14 +68,15 @@ namespace DevilInHeaven.Entities
             width = 32;
             height = width;
 
-            animator = new Animator(spriteSheet, new Rectangle(32, 32, 11, 1));
+            animator = new Animator(spriteSheet, new Rectangle(32, 32, 12, 1));
             animator.AddAnimation(devilAnimationName, 0, 0);
             animator.AddAnimation(angelAnimationName, 3, 2);
+            animator.AddAnimation("death", 12, 11);
             animator.SetAnimation(isAngel ? angelAnimationName : devilAnimationName);
             animator.isFacingRight = true;
             animator.scale = 3;
 
-            iconAnimator = new Animator(spriteSheet, new Rectangle(32, 32, 11, 1));
+            iconAnimator = new Animator(spriteSheet, new Rectangle(32, 32, 12, 1));
             iconAnimator.AddAnimation("a1", 4, 3);
             iconAnimator.AddAnimation("d1", 5, 4);
             iconAnimator.AddAnimation("a2", 6, 5);

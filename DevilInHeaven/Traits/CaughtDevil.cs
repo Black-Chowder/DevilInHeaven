@@ -10,21 +10,23 @@ namespace DevilInHeaven.Traits
 {
     public class CaughtDevil : Trait<Player>
     {
-        public bool externallyAssigned = false;
-        public bool isCaught = false;
+        private bool _isCaught = false;
+        public bool isCaught 
+        { 
+            get => _isCaught;
+            set 
+            {
+                _isCaught = value;
+                parent.controller.isActive = true;
+                if (!parent.isAngel)
+                    parent.controller.isActive = !value;
+            } 
+        }
 
         public CaughtDevil(Player parent) : base(parent) { }
 
         public override void Update(GameTime gameTime)
         {
-            if (externallyAssigned)
-            {
-                externallyAssigned = false;
-                isCaught = true;
-                return;
-            }
-
-            isCaught = false;
             Player[] players = MasterHandler.gameMaster.players;
             for (int i = 0; i < MasterHandler.gameMaster.playerCount; i++)
             {
@@ -36,9 +38,21 @@ namespace DevilInHeaven.Traits
                 {
                     isCaught = true;
                     players[i].caughtDevil.isCaught = true;
-                    players[i].caughtDevil.externallyAssigned = true;
                     return;
                 }
+            }
+
+            if (parent.isAngel)
+            {
+                parent.animator.SetAnimation("angel");
+            }
+            else if (!parent.isAngel && !isCaught)
+            {
+                parent.animator.SetAnimation("devil");
+            }
+            else if (!parent.isAngel && isCaught)
+            {
+                parent.animator.SetAnimation("death");
             }
         }
     }
