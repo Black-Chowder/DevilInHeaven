@@ -9,6 +9,18 @@
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartButton.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartScreen.png</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Caught1.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Caught2.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep2.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep3.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep4.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep5.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/High Impact Fall.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Jump1.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Jump2.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Jump3.wav</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Jump4.wav</File>
   </SourceFiles>
   <DestFiles>
     <File>Clouds.png</File>
@@ -16,5 +28,17 @@
     <File>Player.png</File>
     <File>StartButton.png</File>
     <File>StartScreen.png</File>
+    <File>Caught1.wav</File>
+    <File>Caught2.wav</File>
+    <File>Footstep.wav</File>
+    <File>Footstep2.wav</File>
+    <File>Footstep3.wav</File>
+    <File>Footstep4.wav</File>
+    <File>Footstep5.wav</File>
+    <File>High Impact Fall.wav</File>
+    <File>Jump1.wav</File>
+    <File>Jump2.wav</File>
+    <File>Jump3.wav</File>
+    <File>Jump4.wav</File>
   </DestFiles>
 </SourceFileCollection>

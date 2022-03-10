@@ -73,3 +73,75 @@
 /processorParam:TextureFormat=Color
 /build:../Graphics/StartScreen.png;StartScreen.png
 
+#begin ../Sounds/Caught1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Caught1.wav;Caught1.wav
+
+#begin ../Sounds/Caught2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Caught2.wav;Caught2.wav
+
+#begin ../Sounds/Footstep.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Footstep.wav;Footstep.wav
+
+#begin ../Sounds/Footstep2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Footstep2.wav;Footstep2.wav
+
+#begin ../Sounds/Footstep3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Footstep3.wav;Footstep3.wav
+
+#begin ../Sounds/Footstep4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Footstep4.wav;Footstep4.wav
+
+#begin ../Sounds/Footstep5.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Footstep5.wav;Footstep5.wav
+
+#begin ../Sounds/High Impact Fall.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/High Impact Fall.wav;High Impact Fall.wav
+
+#begin ../Sounds/Jump1.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Jump1.wav;Jump1.wav
+
+#begin ../Sounds/Jump2.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Jump2.wav;Jump2.wav
+
+#begin ../Sounds/Jump3.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Jump3.wav;Jump3.wav
+
+#begin ../Sounds/Jump4.wav
+/importer:WavImporter
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:../Sounds/Jump4.wav;Jump4.wav
+
