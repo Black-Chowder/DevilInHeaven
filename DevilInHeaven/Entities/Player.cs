@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Text;
 using Black_Magic;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Audio;
 using DevilInHeaven.Traits;
 
 namespace DevilInHeaven.Entities
@@ -64,6 +64,12 @@ namespace DevilInHeaven.Entities
         //Testing Variables
         private const bool drawHitbox = false;
         private Texture2D hitboxTexture = null;
+
+        //Sound Variables
+        public static SoundEffect jumpSound;
+        public static SoundEffect caughtSound;
+        public static SoundEffect fallSound;
+        public static SoundEffect footstepSound;
 
         public Player(float x, float y, bool isAngel = true) : base(x, y)
         {
@@ -130,6 +136,11 @@ namespace DevilInHeaven.Entities
         public static void LoadContent(ContentManager Content)
         {
             spriteSheet = Content.Load<Texture2D>(@"Player");
+
+            jumpSound = Content.Load<SoundEffect>(@"Jump4");
+            caughtSound = Content.Load<SoundEffect>(@"Caught2");
+            fallSound = Content.Load<SoundEffect>(@"High Impact Fall");
+            footstepSound = Content.Load<SoundEffect>(@"Footstep2");
         }
 
         public override void Update(GameTime gameTime)

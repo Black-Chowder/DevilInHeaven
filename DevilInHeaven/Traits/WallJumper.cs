@@ -41,6 +41,8 @@ namespace DevilInHeaven.Traits
                 parent.dy = -jumpHeight;
 
             parent.dx += jumpDist * (wallSlider.isSlidingRight ? -1 : 1);
+
+            Player.jumpSound.Play();
         }
     }
 }

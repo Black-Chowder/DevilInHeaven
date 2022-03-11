@@ -88,7 +88,7 @@ namespace DevilInHeaven
             }
 
             //Start game
-            if (playerCount > 1 && players[0].controller.startPressed)
+            if (playerCount > 1 && (players[0].controller.startPressed || players[1].controller.startPressed))
             {
                 Console.WriteLine("\n == Game Has Begun == ");
 

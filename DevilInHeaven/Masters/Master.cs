@@ -70,7 +70,7 @@ namespace Black_Magic
         public static void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)
         {
             //Clear Background
-            graphicsDevice.Clear(Color.CornflowerBlue);
+            graphicsDevice.Clear(new Color(0, 205, 249));
 
             spriteBatch.Begin(samplerState: SamplerState.PointClamp, sortMode: SpriteSortMode.FrontToBack);
 

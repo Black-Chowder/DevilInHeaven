@@ -4,7 +4,6 @@ using System.Text;
 using DevilInHeaven.Entities;
 using Black_Magic;
 using Microsoft.Xna.Framework;
-using DevilInHeaven;
 
 namespace DevilInHeaven.Traits
 {
@@ -18,10 +17,16 @@ namespace DevilInHeaven.Traits
             set 
             {
                 if (!canBeCaught) return;
+                if (_isCaught == false && !parent.isAngel)
+                {
+                    Player.caughtSound.Play();
+                }
                 _isCaught = value;
                 parent.controller.isActive = true;
                 if (!parent.isAngel)
+                {
                     parent.controller.isActive = !value;
+                }
             } 
         }
 

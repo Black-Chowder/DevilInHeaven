@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Xna.Framework;
+using DevilInHeaven.Entities;
 
 namespace Black_Magic
 {
@@ -10,6 +11,8 @@ namespace Black_Magic
     {
         public float speed { get; set; }
         private const float defaultSpeed = 5f;
+
+        private double soundTimer = 0f;
 
         public float verticalSpeed 
         { 
@@ -42,6 +45,15 @@ namespace Black_Magic
         {
             parent.dx += MathF.Cos(angle) * determination * speed * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
             parent.dy += MathF.Sin(angle) * determination * (angle < 0 ? upSpeed : downSpeed) * (float)gameTime.ElapsedGameTime.TotalSeconds * 60f;
+
+            if (!parent.hasTrait<Gravity>())
+                return;
+            soundTimer -= gameTime.ElapsedGameTime.TotalSeconds;
+            if (determination > .5f && soundTimer <= 0 && parent.getTrait<Gravity>().grounded)
+            {
+                soundTimer = Player.footstepSound.Duration.TotalSeconds;
+                Player.footstepSound.Play();
+            }
         }
 
         public void Jump(GameTime gameTime, float determination = 1f)
@@ -50,6 +62,8 @@ namespace Black_Magic
             if (!gravity.grounded) return;
 
             parent.dy -= determination * jumpHeight;
+
+            Player.jumpSound.Play(); //<= This should be parameterized, not hard coded
         }
 
         public override void Update(GameTime gameTime) { }
