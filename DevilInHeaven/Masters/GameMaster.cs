@@ -133,7 +133,9 @@ namespace DevilInHeaven
                     timer = waitingTimer;
                     //TODO: Add smooth transition
 
-                    map = MapLoader.LoadMap(getMap(rand.Next(1, totalMaps + 1)));
+                    int mapIndex = rand.Next(1, totalMaps + 1);
+                    map = MapLoader.LoadMap(getMap(mapIndex));
+                    Console.WriteLine("Map [" + mapIndex + "] loaded");
 
                     //Spawn devil
                     players[devilIndex].x = map.playerPositions[0].X;

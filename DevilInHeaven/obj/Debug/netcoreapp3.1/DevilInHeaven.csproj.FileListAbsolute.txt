@@ -60,3 +60,15 @@ C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\HeavenTileSet16.xnb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\StartButton.xnb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\StartScreen.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Caught1.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Caught2.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Footstep.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Footstep2.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Footstep3.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Footstep4.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Footstep5.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\High Impact Fall.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump1.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump2.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump3.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump4.xnb
