@@ -28,6 +28,8 @@ namespace DevilInHeaven
             graphics.ApplyChanges();
             IsMouseVisible = true;
 
+            Window.Title = "A Devil In Heaven";
+
             //Add penumbra (lighting) component
             penumbra = new PenumbraComponent(this);
             Components.Add(penumbra);
