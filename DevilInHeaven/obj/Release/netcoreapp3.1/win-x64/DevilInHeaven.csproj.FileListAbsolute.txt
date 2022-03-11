@@ -1,0 +1,6 @@
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.Properties.Resources.resources
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.csproj.GenerateResource.cache
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.AssemblyInfoInputs.cache
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.AssemblyInfo.cs
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\obj\Release\netcoreapp3.1\win-x64\DevilInHeaven.csproj.CoreCompileInputs.cache
