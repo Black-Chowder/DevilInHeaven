@@ -72,3 +72,5 @@ C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump2.xnb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump3.xnb
 C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\Jump4.xnb
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\bensound-moose.ogg
+C:\Users\iabla\Documents\GitHub\DevilInHeaven\DevilInHeaven\bin\Debug\netcoreapp3.1\Content\bensound-moose.xnb

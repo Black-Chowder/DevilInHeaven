@@ -73,6 +73,12 @@
 /processorParam:TextureFormat=Color
 /build:../Graphics/StartScreen.png;StartScreen.png
 
+#begin ../Sounds/bensound-moose.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:../Sounds/bensound-moose.mp3;bensound-moose.mp3
+
 #begin ../Sounds/Caught1.wav
 /importer:WavImporter
 /processor:SoundEffectProcessor

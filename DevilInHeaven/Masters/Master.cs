@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 using DevilInHeaven;
 using DevilInHeaven.Entities;
 
@@ -18,6 +19,8 @@ namespace Black_Magic
 
         public static StartScreen startScreen;
 
+        public static Song song;
+
         private const bool drawGrid = false;
 
         public static void Init()
@@ -31,6 +34,10 @@ namespace Black_Magic
             EntityHandler.Init();
 
             startScreen = new StartScreen();
+
+            MediaPlayer.IsRepeating = true;
+            MediaPlayer.Volume = .75f;
+            MediaPlayer.Play(song);
         }
 
         public static void Update(GameTime gameTime)
@@ -65,6 +72,9 @@ namespace Black_Magic
             StartScreen.LoadContent(Content);
             Player.LoadContent(Content);
             Map.LoadContent(Content);
+
+            song = Content.Load<Song>(@"bensound-moose");
+            
         }
 
         public static void Draw(SpriteBatch spriteBatch, GraphicsDevice graphicsDevice)

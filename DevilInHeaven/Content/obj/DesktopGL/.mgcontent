@@ -9,6 +9,7 @@
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/Player.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartButton.png</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Graphics/StartScreen.png</File>
+    <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/bensound-moose.mp3</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Caught1.wav</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Caught2.wav</File>
     <File>C:/Users/iabla/Documents/GitHub/DevilInHeaven/DevilInHeaven/Content/../Sounds/Footstep.wav</File>
@@ -28,6 +29,7 @@
     <File>Player.png</File>
     <File>StartButton.png</File>
     <File>StartScreen.png</File>
+    <File>bensound-moose.mp3</File>
     <File>Caught1.wav</File>
     <File>Caught2.wav</File>
     <File>Footstep.wav</File>
